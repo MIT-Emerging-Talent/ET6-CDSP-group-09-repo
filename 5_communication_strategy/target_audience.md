@@ -16,7 +16,7 @@ whether professional or student. We categorize our audience into two main groups
 
 Examples: IHME, WHO, OpenAQ, national public health agencies
 
-**Capabilities**  
+### Group 1 Capabilities  
 
 - Deep expertise in epidemiology, environmental monitoring, and public health
   policy  
@@ -25,7 +25,7 @@ Examples: IHME, WHO, OpenAQ, national public health agencies
 - Strong infrastructure for disseminating evidence-based recommendations to
   governments, NGOs, and the public  
 
-**Constraints**  
+### Group 1 Constraints
 
 - Need for robust, peer-reviewed evidence before adopting new models or
   recommendations  
@@ -33,14 +33,14 @@ Examples: IHME, WHO, OpenAQ, national public health agencies
 - Competing global health priorities that can reduce immediate attention to air
   pollution  
 
-**How we intend to reach them**  
+### How we intend to reach Group 1
 
 - Engage through official organizational platforms, direct email campaigns, and
   LinkedIn pages  
 - Use our project website (AtmosFear) as a central hub for technical documentation,
   downloadable results, and interactive tools  
 
-**What we would like them to learn (Core Message)**  
+### What we would like Group 1 to learn (Core Message)
 
 - PM₂.₅ levels significantly influence cardiovascular and respiratory disease
   burdens  
@@ -49,7 +49,7 @@ Examples: IHME, WHO, OpenAQ, national public health agencies
 - This approach can generate synthetic data and forecast potential health improvements
   from pollution reduction initiatives  
 
-**How we hope they will act**  
+### How we hope Group 1 will act
 
 - Integrate our model into health risk assessment frameworks  
 - Advocate for air quality regulations and targeted interventions  
@@ -60,26 +60,26 @@ Examples: IHME, WHO, OpenAQ, national public health agencies
 
 ## Audience Group 2: Researchers (Professionals and Students)
 
-**Capabilities**  
+### Group 2 Capabilities
 
 - Skilled in statistical analysis, modeling, and environmental health research  
 - Able to adapt methodologies for specialized contexts  
 - Often looking for innovative approaches to address existing research gaps  
 
-**Constraints**  
+### Group 2 Constraints
 
 - May lack access to high-quality or large-scale environmental health datasets  
 - Limited funding and tight deadlines  
 - Require clear methodological transparency to replicate results  
 
-**How we intend to reach them**  
+### How we intend to reach Group 2
 
 - Share our work in technical and academic communities on platforms such as
   LinkedIn, Facebook, and other scholarly networking sites  
 - Provide open-access datasets, code, and tutorials through GitHub and our
   website  
 
-**What we would like them to learn (Core Message)**  
+### What we would like Group 2 to learn (Core Message)
 
 - PM₂.₅ pollution is a strong predictor of cardiovascular and respiratory disease
   burdens  
@@ -88,7 +88,7 @@ Examples: IHME, WHO, OpenAQ, national public health agencies
 - The model can generate synthetic datasets for areas where monitoring data is
   limited  
 
-**How we hope they will act**  
+### How we hope Group 2 will act
 
 - Apply our model in their research to expand understanding of air pollution’s
   health impacts  
