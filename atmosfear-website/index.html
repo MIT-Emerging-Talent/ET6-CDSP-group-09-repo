@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atmosfear - PM₂.₅ Research</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Glossary Link Styles */
+        .glossary-link {
+            color: #06b6d4;
+            text-decoration: none;
+            border-bottom: 1px dotted #06b6d4;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .glossary-link:hover {
+            color: #0891b2;
+            border-bottom-color: #0891b2;
+            background: rgba(6, 182, 212, 0.1);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.98);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem; /* Reduced gap */
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #22d3ee;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #22d3ee;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.6)), url('girl-mask-hero.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero .highlight {
+            color: #fbbf24;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 1rem;
+            color: #f1f5f9;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-weight: 600;
+        }
+
+        .hero .description {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            margin-bottom: 2rem;
+            color: #e2e8f0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: white;
+            padding: 15px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.5);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #22d3ee;
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.3);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(34, 211, 238, 0.1);
+            border-color: #22d3ee;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        /* Why This Matters Section */
+        .why-matters-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+        }
+
+        .why-matters-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(240, 249, 255, 0.95);
+            z-index: 1;
+        }
+
+        .why-matters-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-matters-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+            border: 1px solid #bae6fd;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .why-matters-card .highlight-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #1e293b;
+            margin-bottom: 2rem;
+            text-shadow: none; /* Ensure text is clear on light background */
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            background: #f0f9ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #06b6d4;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #0891b2;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #475569;
+            font-weight: 500;
+        }
+
+        /* PM2.5 Explanation Section */
+        .pm25-section {
+            background: white;
+        }
+
+        .pm25-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .pm25-content {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .pm25-content h3 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #0f172a;
+        }
+
+        .pm25-content .icon {
+            color: #06b6d4;
+            font-size: 2rem;
+        }
+
+        .sources-list, .effects-list {
+            list-style: none;
+        }
+
+        .sources-list li, .effects-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #334155;
+        }
+
+        .sources-list li::before, .effects-list li::before {
+            content: "•";
+            color: #06b6d4;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .visual-placeholder {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px dashed #22d3ee;
+        }
+
+        .visual-placeholder i {
+            font-size: 3rem;
+            color: #22d3ee;
+            margin-bottom: 1rem;
+        }
+
+        .visual-placeholder h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .visual-placeholder p {
+            color: #cbd5e1;
+        }
+
+        /* Research Section */
+        .research-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+        }
+
+        .research-section .section-title {
+            color: white;
+        }
+
+        .research-section .section-subtitle {
+            color: #cbd5e1;
+        }
+
+        .research-story {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 3rem;
+        }
+
+        .research-question {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #22d3ee;
+            font-style: italic;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: rgba(34, 211, 238, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #22d3ee;
+        }
+
+        .personal-story {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .personal-story .quote {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #f1f5f9;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .personal-story .attribution {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .ambient-note {
+            background: rgba(34, 211, 238, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #22d3ee;
+            margin-bottom: 2rem;
+        }
+
+        .ambient-note p {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .ambient-note strong {
+            color: #22d3ee;
+        }
+
+        /* Methods Section */
+        .methods-section {
+            background: #f8fafc;
+        }
+
+        .methods-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .methods-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.1);
+        }
+
+        .methods-content h3 {
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .methods-list {
+            list-style: none;
+        }
+
+        .methods-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #334155;
+        }
+
+        .methods-list li::before {
+            content: "▶";
+            color: #06b6d4;
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .data-sources {
+            background: linear-gradient(135deg, #1b3f46 0%, #0891b2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .data-sources h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .data-sources .source-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            border-left: 3px solid #fbbf24;
+        }
+
+        .data-sources .source-item h4 {
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        .data-sources .source-item p {
+            color: #f1f5f9;
+            font-size: 0.9rem;
+        }
+
+        .methods-visual {
+            text-align: center;
+        }
+
+        .methods-visual img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.2);
+        }
+
+        /* Key Findings Section */
+        .findings-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .findings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .finding-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.15);
+            border: 1px solid #bae6fd;
+            transition: transform 0.3s ease;
+        }
+
+        .finding-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .finding-card .finding-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        }
+
+        .finding-card h3 {
+            color: #0f172a;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .finding-card .stat {
+            background: #f0f9ff;
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            border-left: 3px solid #06b6d4;
+        }
+
+        .finding-card .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0891b2;
+        }
+
+        .finding-card .stat-description {
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        /* Data Tool Section */
+        .data-tool-section {
+            background: white;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .tool-card {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.1);
+        }
+
+        .tool-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .tool-card .icon {
+            color: #06b6d4;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            background: #f9fafb;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            color: #1e293b;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+
+        .predict-button {
+            width: 100%;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .predict-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+            transform: translateY(-2px);
+        }
+
+        .predict-button:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #22d3ee;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+        }
+
+        .result-placeholder {
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .result-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #64748b;
+        }
+
+        .result-placeholder h4 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .result-placeholder p {
+            color: #cbd5e1;
+        }
+
+        .result-content {
+            display: none;
+        }
+
+        .result-content.active {
+            display: block;
+        }
+
+        .result-value {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        .result-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        /* What Can Be Done Section */
+        .action-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+        }
+
+        .action-section .section-title {
+            color: white;
+        }
+
+        .action-section .section-subtitle {
+            color: #cbd5e1;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .action-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .action-card .action-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+        }
+
+        .action-card h3 {
+            color: #22d3ee;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .action-card p {
+            color: #e2e8f0;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        /* Removed action-visual styles */
+
+        /* Sources & Glossary Section */
+        .sources-section {
+            background: #f8fafc;
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .sources-card, .glossary-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.1);
+        }
+
+        .sources-card h3, .glossary-card h3 {
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .source-link {
+            display: block;
+            color: #06b6d4;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .source-link:hover {
+            color: #0891b2;
+        }
+
+        .glossary-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .glossary-table th,
+        .glossary-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+
+        .glossary-table th {
+            background: #f8fafc;
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        .glossary-table td {
+            color: #475569;
+        }
+
+        .glossary-table td:first-child {
+            font-weight: 600;
+            color: #0f172a;
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+        }
+
+        .about-section .section-title {
+            color: white;
+        }
+
+        .about-section .section-subtitle {
+            color: #cbd5e1;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+        }
+
+        .about-card h3 {
+            color: #22d3ee;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+        }
+
+        .mit-badge {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .mit-badge .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(34, 211, 238, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: 1px solid #22d3ee;
+            color: #22d3ee;
+            font-weight: 600;
+        }
+
+        .contact-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .contact-section h4 {
+            color: #22d3ee;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #22d3ee;
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Pulse Animation */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        /* Intersection Observer animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Interactive elements */
+        .interactive-element {
+            transition: all 0.3s ease;
+        }
+
+        .interactive-element:hover {
+            transform: scale(1.02);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .pm25-grid,
+            .tool-grid,
+            .sources-grid,
+            .methods-grid,
+            .action-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .findings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon floating">
+                    <i class="fas fa-wind"></i>
+                </div>
+                Atmosfear
+            </a>
+            <ul class="nav-links">
+                <li><a href="#why-matters">Overview</a></li>
+                <li><a href="#research-section">Research</a></li>
+                <li><a href="#findings-section">Key Findings</a></li>
+                <li><a href="#data-tool-section">Predictor</a></li>
+                <li><a href="#action-section">What Can Be Done</a></li>
+                <li><a href="#glossary">Glossary</a></li>
+                <li><a href="#about-section">About</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Invisible Killer: <span class="highlight">Air Pollution</span></h1>
+            <p class="subtitle">Air pollution silently claims over 7 million lives every year.</p>
+            <p class="description">
+                It's one of the most urgent yet overlooked global health crises, and its effects aren't equally shared.
+                At the heart of this issue is PM₂.₅, a microscopic pollutant that quietly inflames lungs, damages hearts, 
+                and shortens lives, especially in less-developed countries.
+            </p>
+            <div class="cta-buttons">
+                <a href="#findings-section" class="cta-button">Jump to Key Findings</a>
+                <a href="#data-tool-section" class="cta-button secondary">Try the Predictor Tool</a>
+            </div>
+        </div>
+        <div class="scroll-indicator pulse">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Why This Matters Section -->
+    <section id="why-matters" class="section why-matters-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Why This Matters</h2>
+            <div class="why-matters-card fade-in interactive-element">
+                <p class="highlight-text">
+                    Air pollution is often framed as an environmental issue, but it's also a public health emergency.
+                    Among all pollutants, PM₂.₅ (particulate matter smaller than 2.5 micrometers) is particularly dangerous,
+                    it's small enough to bypass your body's defenses and settle deep in your lungs and bloodstream.
+                </p>
+                <p style="color: #475569; font-size: 1.1rem; line-height: 1.7;">
+                    While everyone is affected by air pollution, our analysis shows that not all populations are equally vulnerable. 
+                    Countries with lower development levels face disproportionately higher health burdens from the same levels of pollution.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">7M+</div>
+                        <div class="stat-label">Premature Deaths Annually</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2.5μm</div>
+                        <div class="stat-label">Particle Size (30x smaller than hair)</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3x</div>
+                        <div class="stat-label">Higher Impact in Low-SDI Countries</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is PM2.5 Section -->
+    <section id="pm25-section" class="section pm25-section">
+        <div class="container">
+            <h2 class="section-title fade-in">What Is PM₂.₅?</h2>
+            <p class="section-subtitle fade-in">
+                PM₂.₅ is made up of ultrafine particles emitted from various sources. Because of its size, 
+                PM₂.₅ can penetrate deep into the lungs, cross into the bloodstream, and contribute to serious health conditions.
+            </p>
+
+            <div class="pm25-grid">
+                <div class="pm25-content fade-in interactive-element">
+                    <h3>
+                        <i class="fas fa-industry icon"></i>
+                        Sources of PM₂.₅
+                    </h3>
+                    <ul class="sources-list">
+                        <li>Vehicle exhaust</li>
+                        <li>Industrial activity</li>
+                        <li>Biomass burning</li>
+                        <li>Dust and construction</li>
+                        <li>Power plant emissions</li>
+                        <li>Agricultural activities</li>
+                    </ul>
+                </div>
+
+                <div class="pm25-content fade-in interactive-element">
+                    <h3>
+                        <i class="fas fa-heartbeat icon"></i>
+                        Health Effects
+                    </h3>
+                    <ul class="effects-list">
+                        <li>Asthma and respiratory issues</li>
+                        <li>COPD (Chronic Obstructive Pulmonary Disease)</li>
+                        <li>Stroke and cardiovascular disease</li>
+                        <li>Heart disease</li>
+                        <li>Lung cancer</li>
+                        <li>Premature death</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Visual Placeholder for PM2.5 Body Effects -->
+            <div class="visual-placeholder fade-in interactive-element">
+                <img src="health-impacts-of-pm25-pollution.png"  
+                    style="max-width: 50%; height: auto; border-radius: 10px;">
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research-section" class="section research-section">
+        <div class="container">
+            <h2 class="section-title fade-in">About the Research</h2>
+            <p class="section-subtitle fade-in">
+                Understanding the global impact of air pollution on human health through comprehensive data analysis
+            </p>
+
+            <div class="ambient-note fade-in">
+                <p>
+                    <strong>Important Note:</strong> Our research focuses specifically on <strong>ambient (outdoor) PM₂.₅ air pollution</strong>, 
+                    examining its long-term health impacts across different countries and development levels.
+                </p>
+            </div>
+
+            <div class="research-story fade-in interactive-element">
+                <h3 style="color: #22d3ee; margin-bottom: 1.5rem;">What We Set Out to Answer</h3>
+                <div class="research-question">
+                    "To what extent have ambient PM₂.₅ concentrations (2010–2019) influenced the burden of cardiovascular 
+                    and respiratory diseases across countries with varying socio-demographic development levels, and how 
+                    might this long-term exposure relate to COVID-19 mortality outcomes?"
+                </div>
+
+                <div class="personal-story">
+                    <div class="quote">
+                        It was driven by a story from a group member: Her mother, who has asthma, experiences severe 
+                        discomfort when staying in cities with poor air quality. Even short visits can mean weeks of 
+                        relying on medications, constant coughing, and the simple wish to breathe without pain. For her 
+                        and millions with similar and different health conditions, clean air isn't just a preference, it's a necessity.
+                    </div>
+                    <div class="attribution">
+                        But how feasible is it to find cities where the air is truly safe for vulnerable individuals?
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methods Section -->
+    <section class="section methods-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Methods – Making Sense of Complex Data</h2>
+            <p class="section-subtitle fade-in">
+                We applied several statistical and machine learning techniques to uncover patterns in the data
+            </p>
+
+            <div class="methods-grid">
+                <div class="methods-content fade-in interactive-element">
+                    <h3>
+                        <i class="fas fa-chart-line" style="color: #06b6d4;"></i>
+                        Statistical Techniques
+                    </h3>
+                    <ul class="methods-list">
+                        <li><strong><a href="#glossary" class="glossary-link">Linear Regression</a>:</strong> Our baseline for estimating average effects</li>
+                        <li><strong><a href="#glossary" class="glossary-link">Random Forest Regression</a>:</strong> To detect nonlinear patterns</li>
+                        <li><strong><a href="#glossary" class="glossary-link">Rolling Average</a> & <a href="#glossary" class="glossary-link">Lagged Average</a>:</strong> To measure long-term effects of exposure</li>
+                        <li><strong><a href="#glossary" class="glossary-link">Interaction Models</a>:</strong> To see if development level (SDI) changes how PM₂.₅ affects health</li>
+                        <li><strong><a href="#glossary" class="glossary-link">Log-Transformed Regression</a>:</strong> For skewed data like COVID-19 deaths</li>
+                        <li><strong><a href="#glossary" class="glossary-link">Quantile Regression</a>:</strong> To see if impacts differ between high-burden vs low-burden countries</li>
+                    </ul>
+                </div>
+
+                <div class="methods-visual fade-in">
+                    <img src="methodology_atmosfear.png" alt="Research methodology process" />
+                    <p style="color: #64748b; margin-top: 1rem; font-size: 0.9rem;">
+                        Research methodology and statistical analysis process
+                    </p>
+                </div>
+
+
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <div class="data-sources fade-in interactive-element">
+                    <h3>What We Measured</h3>
+                    <div class="source-item">
+                        <h4>PM₂.₅ Exposure Data</h4>
+                        <p>Annual averages at country level from WHO Global Health Observatory</p>
+                    </div>
+                    <div class="source-item">
+                        <h4>Health Burden Data (<a href="#glossary" class="glossary-link">DALYs</a>)</h4>
+                        <p><a href="#glossary" class="glossary-link">Disability-Adjusted Life Years</a> from the IHME Global Burden of Disease study</p>
+                    </div>
+                    <div class="source-item">
+                        <h4>SDI (Socio-Demographic Index)</h4>
+                        <p>A measure of development that combines income, education, and fertility</p>
+                    </div>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
+                        <p style="font-size: 0.9rem; color: #f1f5f9;">
+                            We grouped our results by disease type: Cardiovascular disease, Stroke, Chronic respiratory disease, 
+                            All-cause <a href="#glossary" class="glossary-link">DALYs</a>, and COVID-19 mortality
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Findings Section -->
+    <section id="findings-section" class="section findings-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Key Findings</h2>
+            <p class="section-subtitle fade-in">
+                Our analysis reveals significant disparities in how air pollution affects different populations worldwide
+            </p>
+
+            <div class="findings-grid">
+                <div class="finding-card fade-in interactive-element">
+                    <div class="finding-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>PM₂.₅ Hits Harder in Low-SDI Countries</h3>
+                    <div class="stat">
+                        <div class="stat-value">0.72 <a href="#glossary" class="glossary-link">DALYs</a></div>
+                        <div class="stat-description">per 100,000 people in low-SDI countries for 10 µg/m³ increase</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">0.22 <a href="#glossary" class="glossary-link">DALYs</a></div>
+                        <div class="stat-description">per 100,000 people in very high-SDI countries for same increase</div>
+                    </div>
+                    <p style="color: #475569; margin-top: 1rem;">
+                        In short: the same air pollution is more dangerous if you live in a less-developed country.
+                    </p>
+                </div>
+
+                <div class="finding-card fade-in interactive-element">
+                    <div class="finding-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>SDI Is the Strongest Predictor</h3>
+                    <p style="color: #475569; margin-bottom: 1rem;">
+                        Socio-demographic development (SDI) consistently explains the largest share of variation in <a href="#glossary" class="glossary-link">DALYs</a> across countries.
+                    </p>
+                    <div class="stat">
+                        <div class="stat-value">Primary Factor</div>
+                        <div class="stat-description">Development level determines health vulnerability more than pollution alone</div>
+                    </div>
+                </div>
+
+                <div class="finding-card fade-in interactive-element">
+                    <div class="finding-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Pollution's Effects Are Cumulative</h3>
+                    <p style="color: #475569; margin-bottom: 1rem;">
+                        Models that used 3–5 year <a href="#glossary" class="glossary-link">rolling averages</a> performed better than single-year exposure.
+                    </p>
+                    <div class="stat">
+                        <div class="stat-value">Long-term Impact</div>
+                        <div class="stat-description">Suggests cumulative damage from pollution exposure over time</div>
+                    </div>
+                </div>
+
+                <div class="finding-card fade-in interactive-element">
+                    <div class="finding-icon">
+                        <i class="fas fa-virus"></i>
+                    </div>
+                    <h3>COVID-19: Weaker but Consistent Link</h3>
+                    <p style="color: #475569; margin-bottom: 1rem;">
+                        Long-term PM₂.₅ exposure showed a modest but consistent association with COVID-19 mortality in 2020.
+                    </p>
+                    <div class="stat">
+                        <div class="stat-value">Decade Average</div>
+                        <div class="stat-description">Especially when averaged over the previous decade</div>
+                    </div>
+                </div>
+            </div>
+
+<!-- Visual Placeholder for Findings -->
+<div class="visual-placeholder fade-in interactive-element">
+    <h4>Key Findings Visualizations</h4>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem;">
+        
+        <div style="text-align: center;">
+            <img src="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/blob/main/4_data_analysis/pm25_health_impact_analysis/figures/vulnerability_plots/fig_08_vulnerability_analysis.png?raw=true" 
+                alt="Vulnerability Analysis" 
+                style="width: 100%; max-width: 500px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h5 style="margin-top: 1rem; color: #334155;">Vulnerability Analysis by Region</h5>
+        </div>
+        
+        <div style="text-align: center;">
+            <img src="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/blob/main/4_data_analysis/pm25_health_impact_analysis/figures/model_diagnostics/diag_plots_respiratory_dalys.png?raw=true" 
+                alt="Respiratory DALYs Diagnostic Plots" 
+                style="width: 100%; max-width: 500px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h5 style="margin-top: 1rem; color: #334155;">Respiratory <a href="#glossary" class="glossary-link">DALYs</a> Model Diagnostics</h5>
+        </div>
+        
+        <div style="text-align: center;">
+            <img src="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/blob/main/4_data_analysis/pm25_health_impact_analysis/figures/eda_figures/fig_03_top10_pm25.png?raw=true" 
+                alt="Top 10 Countries by PM2.5 Exposure" 
+                style="width: 100%; max-width: 500px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h5 style="margin-top: 1rem; color: #334155;">Top 10 Countries by PM₂.₅ Exposure</h5>
+        </div>
+        
+        <div style="text-align: center;">
+            <img src="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/blob/main/4_data_analysis/pm25_health_impact_analysis/figures/model_diagnostics/diag_plots_cardiovascular_dalys.png?raw=true" 
+                alt="Cardiovascular DALYs Diagnostic Plots" 
+                style="width: 100%; max-width: 500px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <h5 style="margin-top: 1rem; color: #334155;">Cardiovascular <a href="#glossary" class="glossary-link">DALYs</a> Model Diagnostics</h5>
+        </div>
+    </div>
+    
+    <!-- Added "View More" link section -->
+    <div style="text-align: center; margin-top: 2rem;">
+        <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/tree/main/4_data_analysis/pm25_health_impact_analysis/figures" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           style="display: inline-block; 
+                  padding: 0.75rem 1.5rem; 
+                  background-color: #3b82f6; 
+                  color: white; 
+                  border-radius: 8px; 
+                  text-decoration: none; 
+                  font-weight: 600;
+                  transition: background-color 0.3s ease;">
+            View All Visualizations
+        </a>
+        <p style="margin-top: 0.5rem; color: #64748b; font-size: 0.9rem;">
+            Explore our complete collection of data visualizations and analysis figures
+        </p>
+    </div>
+</div>
+        </div>
+    </section>
+
+    <!-- Data Tool Section -->
+<!-- Data Tool Section - Under Construction -->
+    <section id="data-tool-section" class="section data-tool-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Interactive Tool Coming Soon</h2>
+            <p class="section-subtitle fade-in">
+                We're working on an interactive predictor tool to help visualize the health impacts of PM₂.₅
+            </p>
+
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <div class="visual-placeholder fade-in interactive-element" style="padding: 4rem 2rem; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+                    <i class="fas fa-tools" style="font-size: 4rem; color: #22d3ee; margin-bottom: 1.5rem;"></i>
+                    <h3 style="color: white; font-size: 2rem; margin-bottom: 1rem;">Under Construction</h3>
+                    <p style="color: #cbd5e1; font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+                        Our team is currently developing an interactive tool that will allow you to explore predicted health impacts based on PM₂.₅ levels and country development factors.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Can Be Done Section -->
+    <section id="action-section" class="section action-section">
+        <div class="container">
+            <h2 class="section-title fade-in">What Can Be Done?</h2>
+            <p class="section-subtitle fade-in">
+                Everyone has a role to play in addressing air pollution and protecting public health
+            </p>
+
+            <div class="action-grid">
+                <div class="action-card fade-in interactive-element">
+                    <div class="action-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>For Individuals</h3>
+                    <p>
+                        We all have a role to play when it comes to protecting our health. If you live in an area with high pollution, 
+                        try to check local air quality updates regularly and limit outdoor activity when levels are high, especially 
+                        vulnerable groups such as children, the elderly, and those with chronic conditions.
+                    </p>
+                    <p>
+                        Small actions like using air purifiers indoors or choosing cleaner modes of transport can also make a difference.
+                    </p>
+                </div>
+
+                <div class="action-card fade-in interactive-element">
+                    <div class="action-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>For Policymakers & Health Authorities</h3>
+                    <p>
+                        We urge governments and environmental agencies to go beyond general air quality indices and develop a 
+                        comprehensive <strong>Health-Adjusted Pollution Index</strong>, one that clearly links pollutant levels 
+                        to measurable health risks.
+                    </p>
+                    <p>
+                        This is about prioritizing health in every environmental policy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sources & Glossary Section -->
+    <section id="glossary" class="section sources-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Sources & Glossary</h2>
+            
+            <div class="sources-grid">
+                <div class="sources-card fade-in interactive-element">
+                    <h3>
+                        <i class="fas fa-book" style="color: #06b6d4;"></i>
+                        Sources
+                    </h3>
+                    <a href="https://vizhub.healthdata.org/gbd-results/" class="source-link">Global Burden of Disease Study (IHME)</a>
+                    <a href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/concentrations-of-fine-particulate-matter-(pm2-5)" class="source-link">Air pollution: concentrations of fine particulate matter (PM2.5), SDG 11.6.2</a>
+                    <a href="https://ghdx.healthdata.org/record/global-burden-disease-study-2021-gbd-2021-socio-demographic-index-sdi-1950%E2%80%932021" class="source-link">Global Burden of Disease Study 2021 (GBD 2021) Socio-demographic Index (SDI) 1950–2021</a>
+                </div>
+
+                <div class="glossary-card fade-in interactive-element">
+                    <h3>
+                        <i class="fas fa-list" style="color: #06b6d4;"></i>
+                        Glossary
+                    </h3>
+                    <table class="glossary-table">
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>PM₂.₅</strong></td>
+                                <td>Fine particulate matter smaller than 2.5 micrometers in diameter. These airborne particles can penetrate deep into the lungs and enter the bloodstream, causing serious health effects.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DALYs (Disability-Adjusted Life Years)</strong></td>
+                                <td>A measure of overall disease burden, calculated as the sum of years of life lost due to premature death and years lived with disability.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SDI (Socio-Demographic Index)</strong></td>
+                                <td>A composite index combining income, education level, and fertility rate to represent a country's development level.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rolling Average</strong></td>
+                                <td>A multi-year average of data used to smooth out year-to-year fluctuations and capture longer-term trends.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lagged Average</strong></td>
+                                <td>An average of exposure values from previous years used to estimate delayed health effects of pollution.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Linear Regression</strong></td>
+                                <td>A basic statistical method that models the relationship between a continuous outcome and one or more predictors by fitting a straight line. Used as a baseline to estimate average effects of PM₂.₅.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Random Forest Regression</strong></td>
+                                <td>A machine learning method that uses an ensemble of decision trees to model complex and nonlinear relationships between variables. Helps detect patterns missed by linear models.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Log-Transformed Regression</strong></td>
+                                <td>A version of linear regression where the dependent variable (e.g., COVID-19 deaths) is log-transformed to handle skewed data and stabilize variance.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interaction Models</strong></td>
+                                <td>Regression models that test whether the effect of one variable (e.g., PM₂.₅) changes depending on another (e.g., SDI), revealing effect modification.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Quantile Regression</strong></td>
+                                <td>A statistical technique that estimates relationships at different points (quantiles) of the outcome distribution, such as the 25th or 75th percentile. Useful for understanding how effects differ across countries with low vs. high disease burden.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about-section" class="section about-section">
+        <div class="container">
+            <h2 class="section-title fade-in">About Atmosfear</h2>
+            <p class="section-subtitle fade-in">
+            </p>
+
+            <div class="about-card fade-in interactive-element">
+
+                <p>
+                    <strong>Atmosfear</strong> is a student-led data science research project from the MIT Emerging Talent Program.
+                    We investigate the global health impacts of long-term exposure to air pollution, focusing on how 
+                    socioeconomic disparities shape vulnerability.
+                </p>
+                <p>
+                    Our goal is to bridge data science and public health to uncover hidden patterns, reveal inequities, 
+                    and inform smarter global action.
+                </p>
+                <p style="font-style: italic; color: #22d3ee; text-align: center; font-size: 1.2rem;">
+                    "We want to humanize the numbers and make the invisible visible."
+                </p>
+
+                <div class="mit-badge">
+                    <div class="badge">
+                        <i class="fas fa-university"></i>
+                        <span>Part of MIT Emerging Talent Program</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-section fade-in interactive-element">
+                <h4>Contact Us</h4>
+                <div class="contact-links">
+                    <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" class="contact-link">
+                        <i class="fab fa-github"></i> GitHub Repository
+                    </a>
+                    <a href="mailto:atmosfear.group@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i> Email Us
+                    </a>
+                </div>
+                <p style="margin-top: 1rem; color: #94a3b8; font-size: 0.9rem;">
+                    Interested in collaboration or media inquiries? Reach out to us.
+                </p>
+            </div>
+
+            <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 8px; text-align: center;">
+                <p style="color: #94a3b8; font-size: 0.9rem;">
+                    <strong>Legal & Acknowledgements:</strong> This site is for research communication purposes only. 
+                    Data used is sourced from IHME GBD and WHO. All findings are based on statistical modeling and 
+                    should not be used for clinical or policy decisions without further validation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Sample DALY data (will be replaced with real dataset)
+
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add interactive hover effects
+        document.querySelectorAll('.interactive-element').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Custom function to handle glossary links to prevent over-linking
+        function applyGlossaryLinks() {
+            const sections = document.querySelectorAll('section');
+            const linkedTerms = {}; // Track linked terms per section
+
+            sections.forEach(section => {
+                linkedTerms[section.id] = new Set();
+                const linksInThisSection = section.querySelectorAll('.glossary-link');
+
+                linksInThisSection.forEach(link => {
+                    const term = link.textContent.trim();
+                    // Only link if it's not PM₂.₅ or SDI, or if it's the first occurrence in this section
+                    if ((term === 'PM₂.₅' || term === 'SDI') && linkedTerms[section.id].has(term)) {
+                        link.outerHTML = link.textContent; // Remove link, keep text
+                    } else {
+                        linkedTerms[section.id].add(term);
+                    }
+                });
+            });
+        }
+
+        // Call the function after the DOM is loaded
+        document.addEventListener('DOMContentLoaded', applyGlossaryLinks);
+
+    </script>
+</body>
+</html>
+
