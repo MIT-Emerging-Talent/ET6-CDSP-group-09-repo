@@ -161,6 +161,20 @@ Despite these caveats, the evidence base across multiple modeling frameworks con
 
 ---
 
+[![Typing SVG][badge-21]](https://git.io/typing-svg)  
+We chose to present our project through a **website** because it is more than just a place to share data. It is a storytelling platform. With striking visuals, clear explanations, and interactive tools, the site transforms complex air pollution statistics into something human, relatable, and impossible to ignore. It is where numbers become narratives, and the invisible becomes visible.
+
+Our communication strategy centers on two key audiences:
+
+1. **Environmental and Public Health Organizations** such as IHME, WHO, and OpenAQ. We plan to engage these organizations to feature our website and integrate our tool into their platforms. Their reach and credibility can help carry our work to far larger and more diverse audiences than we could reach alone.  
+2. **Researchers**, including established professionals and students, who can incorporate our findings into their own studies and projects, driving real-world impact by shaping policies and guiding interventions.
+
+By pairing targeted impact with broad visibility, we aim to ensure our work drives change in the hands of experts while also inspiring awareness among the wider public.
+
+🔗 **Explore the final artefact:** [Atmosfear website](https://mit-emerging-talent.github.io/ET6-CDSP-group-09-repo/atmosfear-website/)
+
+---
+
 [![Typing SVG][badge-10]](https://git.io/typing-svg)  
 The [`1_datasets`](1_datasets) folder includes all datasets used throughout the project, including:
 
@@ -199,6 +213,14 @@ The [`4_data_analysis`](4_data_analysis/) folder includes scripts and notebooks 
 - Fit machine learning models to evaluate relationships  
 - Generate insights to support interpretation and reporting
 - Providing detailed technical explanations of analytical steps, model rationale, and result interpretation
+
+---
+
+[![Typing SVG][badge-22]](https://git.io/typing-svg)  
+The [`5_communication_strategy`](5_communication_strategy/) folder includes:
+
+- A detailed plan outlining our target audiences, how we intend to reach them, the key messages we want to convey.
+- Our chosen communication artifact  
 
 ---
 
@@ -304,3 +326,5 @@ The [`4_data_analysis`](4_data_analysis/) folder includes scripts and notebooks 
 [badge-18]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=465&height=34&lines=Data+Analysis
 [badge-19]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=520&lines=Our+Collaboration
 [badge-20]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=520&lines=Non+Technical+Explanation+of+Data+Analysis
+[badge-21]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=520&lines=Communicating+Our+Results
+[badge-22]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=520&lines=Communication+Strategy
