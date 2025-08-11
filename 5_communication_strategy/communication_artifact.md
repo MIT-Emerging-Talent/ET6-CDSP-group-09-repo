@@ -51,7 +51,7 @@ justice._
 public health researchers, policymakers, and international organizations.  
 
 **Website Link:**  
-[https://linahkhayri.github.io/atmosfear-website/](https://linahkhayri.github.io/atmosfear-website/)  
+[Project Website](https://linahkhayri.github.io/atmosfear-website/)  
 
 **Key Features:**  
 
@@ -126,7 +126,7 @@ secondary predictor.
 - Promote international collaboration and funding  
 
 **Website Link:** The policy brief is available on the project website
-([https://linahkhayri.github.io/atmosfear-website/](https://linahkhayri.github.io/atmosfear-website/))
+([Project Website](https://linahkhayri.github.io/atmosfear-website/))
 to complement the interactive data visualizations and support evidence-based
 decision making.
 
