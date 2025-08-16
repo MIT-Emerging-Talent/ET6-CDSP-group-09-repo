@@ -1,4 +1,4 @@
-# Meeting Minutes
+# Meeting 25 Minutes
 
 **Date:** August 11, 2025
 
