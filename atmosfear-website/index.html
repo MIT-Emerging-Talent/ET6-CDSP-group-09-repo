@@ -13,6 +13,7 @@
             box-sizing: border-box;
         }
 
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -1164,6 +1165,51 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Legal Section Styles */
+        .legal-section {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        .legal-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .legal-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #06b6d4;
+        }
+
+        .legal-content h4 {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .legal-content p {
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .legal-logos {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .legal-logos img {
+            height: 40px;
+            width: auto;
+        }
     </style>
 </head>
 
@@ -1178,20 +1224,17 @@
                 Atmosfear
             </a>
             <ul class="nav-links">
-                <li><a href="#why-matters">Overview</a></li>
-                <li><a href="#research-section">Research</a></li>
-                <li><a href="#findings-section">Key Findings</a></li>
-                <li><a href="#data-tool-section">Country Profile tool</a></li>
-                <li><a href="#action-section">What Can Be Done</a></li>
-                <li><a href="#glossary">Glossary</a></li>
+                <li><a href="#index.html">Home</a></li>
+                <li><a href="tool.html">Country Profile Tool</a></li>
+                <li><a href="research.html">Research</a></li>
                 <li><a href="#about-section">About</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
@@ -1199,14 +1242,15 @@
 
             <p class="subtitle">Air pollution silently claims over 7 million lives every year.</p>
             <p class="description">
-                It's one of the most urgent yet overlooked global health crises, and its effects aren't equally shared.
+                This is one of the most urgent yet overlooked global health crises, and its effects aren't equally
+                shared.
                 At the heart of this issue is PM₂.₅, a microscopic pollutant that quietly inflames lungs, damages
                 hearts,
                 and shortens lives, especially in less-developed countries.
             </p>
             <div class="cta-buttons">
-                <a href="#findings-section" class="cta-button">Jump to Key Findings</a>
-                <a href="#data-tool-section" class="cta-button secondary">Try the Country Profile Tool</a>
+                <a href="research.html" class="cta-button">View Key Findings</a>
+                <a href="tool.html" class="cta-button secondary">Try the Country Profile Tool</a>
             </div>
         </div>
         <div class="scroll-indicator pulse">
@@ -1215,941 +1259,151 @@
     </section>
 
     <!-- Why This Matters Section -->
-    <section id="why-matters" class="section why-matters-section">
+    <section class="section why-matters-section">
         <div class="container">
             <h2 class="section-title fade-in">Why This Matters</h2>
             <div class="why-matters-card fade-in interactive-element">
                 <p class="highlight-text">
-                    Air pollution is often framed as an environmental issue, but it's also a public health emergency.
-                    Among all pollutants, PM₂.₅ (particulate matter smaller than 2.5 micrometers) is particularly
-                    dangerous,
-                    it's small enough to bypass your body's defenses and settle deep in your lungs and bloodstream.
+                    Air pollution isn't just an environmental issue, it's a health crisis. Tiny particles like <span
+                        class="glossary-link">PM₂.₅</span> penetrate deep into the lungs and bloodstream, raising the
+                    risk of heart disease, stroke, and respiratory illness. But the burden isn't equal everywhere:
+                    countries with lower development levels face much greater health impacts.
                 </p>
-                <p style="color: #475569; font-size: 1.1rem; line-height: 1.7;">
-                    While everyone is affected by air pollution, our analysis shows that not all populations are equally
-                    vulnerable.
-                    Countries with lower development levels face disproportionately higher health burdens from the same
-                    levels of pollution.
+                <p class="highlight-text">
+                    To make these patterns clearer, we built the Country Profile Tool. It allows anyone to explore how
+                    long-term <span class="glossary-link">PM₂.₅</span> exposure affects health outcomes across different
+                    countries, and how these impacts change with socio-demographic development.
                 </p>
 
                 <div class="stats-grid">
-                    <div class="stat-item">
+                    <div class="stat-item fade-in">
                         <div class="stat-number">7M+</div>
-                        <div class="stat-label">Premature Deaths Annually</div>
+                        <div class="stat-label">Premature deaths annually from air pollution</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">2.5μm</div>
-                        <div class="stat-label">Particle Size (30x smaller than hair)</div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Of people breathe polluted air worldwide</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3x</div>
-                        <div class="stat-label">Higher Impact in Low-SDI Countries</div>
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">2-3x</div>
+                        <div class="stat-label">Higher impact in less-developed countries</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- What is PM2.5 Section -->
-    <section id="pm25-section" class="section pm25-section">
-        <div class="container">
-            <h2 class="section-title fade-in">What Is PM₂.₅?</h2>
-            <p class="section-subtitle fade-in">
-                PM₂.₅ is made up of ultrafine particles emitted from various sources. Because of its size,
-                PM₂.₅ can penetrate deep into the lungs, cross into the bloodstream, and contribute to serious health
-                conditions.
-            </p>
-
-            <div class="pm25-grid">
-                <div class="pm25-content fade-in interactive-element">
-                    <h3>
-                        <i class="fas fa-industry icon"></i>
-                        Sources of PM₂.₅
-                    </h3>
-                    <ul class="sources-list">
-                        <li>Vehicle exhaust</li>
-                        <li>Industrial activity</li>
-                        <li>Biomass burning</li>
-                        <li>Dust and construction</li>
-                        <li>Power plant emissions</li>
-                        <li>Agricultural activities</li>
-                    </ul>
-                </div>
-
-                <div class="pm25-content fade-in interactive-element">
-                    <h3>
-                        <i class="fas fa-heartbeat icon"></i>
-                        Health Effects
-                    </h3>
-                    <ul class="effects-list">
-                        <li>Asthma and respiratory issues</li>
-                        <li>COPD (Chronic Obstructive Pulmonary Disease)</li>
-                        <li>Stroke and cardiovascular disease</li>
-                        <li>Heart disease</li>
-                        <li>Lung cancer</li>
-                        <li>Premature death</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Visual Placeholder for PM2.5 Body Effects -->
-            <div class="visual-placeholder fade-in interactive-element">
-                <img src="health-impacts-of-pm25-pollution.png"
-                    style="max-width: 50%; height: auto; border-radius: 10px;">
-            </div>
-        </div>
-    </section>
-
-    <!-- Research Section -->
-    <section id="research-section" class="section research-section">
-        <div class="container">
-            <h2 class="section-title fade-in">About the Research</h2>
-            <p class="section-subtitle fade-in">
-                Understanding the global impact of air pollution on human health through comprehensive data analysis
-            </p>
-
-            <div class="ambient-note fade-in">
-                <p>
-                    <strong>Important Note:</strong> Our research focuses specifically on <strong>ambient (outdoor)
-                        PM₂.₅ air pollution</strong>,
-                    examining its long-term health impacts across different countries and development levels.
-                </p>
-            </div>
-
-            <div class="research-story fade-in interactive-element">
-                <h3 style="color: #22d3ee; margin-bottom: 1.5rem;">What We Set Out to Answer</h3>
-                <div class="research-question">
-                    "To what extent have ambient PM₂.₅ concentrations (2010–2019) influenced the burden of
-                    cardiovascular
-                    and respiratory diseases across countries with varying socio-demographic development levels, and how
-                    might this long-term exposure relate to COVID-19 mortality outcomes?"
-                </div>
-
-                <div class="personal-story">
-                    <div class="quote">
-                        It was driven by a story from a group member: Her mother, who has asthma, experiences severe
-                        discomfort when staying in cities with poor air quality. Even short visits can mean weeks of
-                        relying on medications, constant coughing, and the simple wish to breathe without pain. For her
-                        and millions with similar and different health conditions, clean air isn't just a preference,
-                        it's a necessity.
-                    </div>
-                    <div class="attribution">
-                        But how feasible is it to find cities where the air is truly safe for vulnerable individuals?
+                    <div class="stat-item fade-in">
+                        <div class="stat-number">5μg/m³</div>
+                        <div class="stat-label">WHO guideline for safe PM₂.₅ levels - most places exceed this</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Methods Section -->
-    <section class="section methods-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Our Methods – Making Sense of Complex Data</h2>
-            <p class="section-subtitle fade-in">
-                We applied several statistical and machine learning techniques to uncover patterns in the data
-            </p>
-
-            <div class="methods-grid">
-                <div class="methods-content fade-in interactive-element">
-                    <h3>
-                        <i class="fas fa-chart-line" style="color: #06b6d4;"></i>
-                        Statistical Techniques
-                    </h3>
-                    <div class="methods-table">
-                        <div class="method-row">
-                            <div class="method-name">
-                                <span class="method-arrow">▶</span>
-                                <strong><a href="#glossary" class="glossary-link">Linear Regression</a>:</strong>
-                            </div>
-                            <div class="method-desc">Our baseline for estimating average effects</div>
-                        </div>
-
-                        <div class="method-row">
-                            <div class="method-name">
-                                <span class="method-arrow">▶</span>
-                                <strong><a href="#glossary" class="glossary-link">Random Forest Regression</a>:</strong>
-                            </div>
-                            <div class="method-desc">To detect nonlinear patterns</div>
-                        </div>
-
-                        <div class="method-row">
-                            <div class="method-name">
-                                <span class="method-arrow">▶</span>
-                                <strong><a href="#glossary" class="glossary-link">Rolling Average</a> & <a
-                                        href="#glossary" class="glossary-link">Lagged Average</a>:</strong>
-                            </div>
-                            <div class="method-desc">To measure long-term effects of exposure</div>
-                        </div>
-
-                        <div class="method-row">
-                            <div class="method-name">
-                                <span class="method-arrow">▶</span>
-                                <strong><a href="#glossary" class="glossary-link">Interaction Models</a>:</strong>
-                            </div>
-                            <div class="method-desc">To see if development level (SDI) changes how PM₂.₅ affects health
-                            </div>
-                        </div>
-
-                        <div class="method-row">
-                            <div class="method-name">
-                                <span class="method-arrow">▶</span>
-                                <strong><a href="#glossary" class="glossary-link">Log-Transformed
-                                        Regression</a>:</strong>
-                            </div>
-                            <div class="method-desc">For skewed data like COVID-19 deaths</div>
-                        </div>
-
-                        <div class="method-row">
-                            <div class="method-name">
-                                <span class="method-arrow">▶</span>
-                                <strong><a href="#glossary" class="glossary-link">Quantile Regression</a>:</strong>
-                            </div>
-                            <div class="method-desc">To see if impacts differ between high-burden vs low-burden
-                                countries</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="methods-visual fade-in">
-                    <img src="methodology_atmosfear.png" alt="Research methodology process" />
-                    <p style="color: #64748b; margin-top: 1rem; font-size: 0.9rem;">
-                        Research methodology and statistical analysis process
-                    </p>
-                </div>
-
-
-            </div>
-
-            <div style="margin-top: 3rem;">
-                <div class="data-sources fade-in interactive-element">
-                    <h3>What We Measured</h3>
-                    <div class="source-item">
-                        <h4>PM₂.₅ Exposure Data</h4>
-                        <p>Annual averages at country level from WHO Global Health Observatory</p>
-                    </div>
-                    <div class="source-item">
-                        <h4>Health Burden Data (<a href="#glossary" class="glossary-link">DALYs</a>)</h4>
-                        <p><a href="#glossary" class="glossary-link">Disability-Adjusted Life Years</a> from the IHME
-                            Global Burden of Disease study</p>
-                    </div>
-                    <div class="source-item">
-                        <h4>SDI (Socio-Demographic Index)</h4>
-                        <p>A measure of development that combines income, education, and fertility</p>
-                    </div>
-                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 6px;">
-                        <p style="font-size: 0.9rem; color: #f1f5f9;">
-                            We grouped our results by disease type: Cardiovascular disease, Stroke, Chronic respiratory
-                            disease,
-                            All-cause <a href="#glossary" class="glossary-link">DALYs</a>, and COVID-19 mortality
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Findings Section -->
-    <section id="findings-section" class="section findings-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Key Findings</h2>
-            <p class="section-subtitle fade-in">
-                Our analysis reveals significant disparities in how air pollution affects different populations
-                worldwide
-            </p>
-
-            <div class="findings-grid">
-                <div class="finding-card fade-in interactive-element">
-                    <div class="finding-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>PM₂.₅ Hits Harder in Low-SDI Countries</h3>
-                    <div class="stat">
-                        <div class="stat-value">0.72 <a href="#glossary" class="glossary-link">DALYs</a></div>
-                        <div class="stat-description">per 100,000 people in low-SDI countries for 10 µg/m³ increase
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-value">0.22 <a href="#glossary" class="glossary-link">DALYs</a></div>
-                        <div class="stat-description">per 100,000 people in very high-SDI countries for same increase
-                        </div>
-                    </div>
-                    <p style="color: #475569; margin-top: 1rem;">
-                        In short: the same air pollution is more dangerous if you live in a less-developed country.
-                    </p>
-                </div>
-
-                <div class="finding-card fade-in interactive-element">
-                    <div class="finding-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>SDI Is the Strongest Predictor</h3>
-                    <p style="color: #475569; margin-bottom: 1rem;">
-                        Socio-demographic development (SDI) consistently explains the largest share of variation in <a
-                            href="#glossary" class="glossary-link">DALYs</a> across countries.
-                    </p>
-                    <div class="stat">
-                        <div class="stat-value">Primary Factor</div>
-                        <div class="stat-description">Development level determines health vulnerability more than
-                            pollution alone</div>
-                    </div>
-                </div>
-
-                <div class="finding-card fade-in interactive-element">
-                    <div class="finding-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <h3>Pollution's Effects Are Cumulative</h3>
-                    <p style="color: #475569; margin-bottom: 1rem;">
-                        Models that used 3–5 year <a href="#glossary" class="glossary-link">rolling averages</a>
-                        performed better than single-year exposure.
-                    </p>
-                    <div class="stat">
-                        <div class="stat-value">Long-term Impact</div>
-                        <div class="stat-description">Suggests cumulative damage from pollution exposure over time</div>
-                    </div>
-                </div>
-
-                <div class="finding-card fade-in interactive-element">
-                    <div class="finding-icon">
-                        <i class="fas fa-virus"></i>
-                    </div>
-                    <h3>COVID-19: Weaker but Consistent Link</h3>
-                    <p style="color: #475569; margin-bottom: 1rem;">
-                        Long-term PM₂.₅ exposure showed a modest but consistent association with COVID-19 mortality in
-                        2020.
-                    </p>
-                    <div class="stat">
-                        <div class="stat-value">Decade Average</div>
-                        <div class="stat-description">Especially when averaged over the previous decade</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Visual Placeholder for Findings -->
-            <div class="visual-placeholder fade-in interactive-element">
-                <h4>Key Findings Visualizations</h4>
-
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem;">
-
-                    <!-- Vulnerability Analysis -->
-                    <div style="text-align: center;">
-                        <div
-                            style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 10px; padding: 1rem; height: 100%;">
-                            <img src="https://raw.githubusercontent.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/main/4_data_analysis/pm25_health_impact_analysis/figures/vulnerability_plots/fig_08_vulnerability_analysis.png"
-                                alt="Vulnerability Analysis"
-                                style="width: 100%; height: auto; max-height: 300px; object-fit: contain; border-radius: 8px;"
-                                onerror="this.src='https://via.placeholder.com/500x300/0f172a/22d3ee?text=Vulnerability+Analysis'">
-                            <h5 style="margin-top: 1rem; color: #e2e8f0;">Vulnerability Analysis by Region</h5>
-                        </div>
-                    </div>
-
-                    <!-- Respiratory DALYs -->
-                    <div style="text-align: center;">
-                        <div
-                            style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 10px; padding: 1rem; height: 100%;">
-                            <img src="https://raw.githubusercontent.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/main/4_data_analysis/pm25_health_impact_analysis/figures/model_diagnostics/diag_plots_respiratory_dalys.png"
-                                alt="Respiratory DALYs Diagnostic Plots"
-                                style="width: 100%; height: auto; max-height: 300px; object-fit: contain; border-radius: 8px;"
-                                onerror="this.src='https://via.placeholder.com/500x300/0f172a/22d3ee?text=Respiratory+DALYs'">
-                            <h5 style="margin-top: 1rem; color: #e2e8f0;">Respiratory <a href="#glossary"
-                                    class="glossary-link">DALYs</a> Model Diagnostics</h5>
-                        </div>
-                    </div>
-
-                    <!-- Top 10 Countries -->
-                    <div style="text-align: center;">
-                        <div
-                            style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 10px; padding: 1rem; height: 100%;">
-                            <img src="https://raw.githubusercontent.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/main/4_data_analysis/pm25_health_impact_analysis/figures/eda_figures/fig_03_top10_pm25.png"
-                                alt="Top 10 Countries by PM2.5 Exposure"
-                                style="width: 100%; height: auto; max-height: 300px; object-fit: contain; border-radius: 8px;"
-                                onerror="this.src='https://via.placeholder.com/500x300/0f172a/22d3ee?text=Top+10+Countries'">
-                            <h5 style="margin-top: 1rem; color: #e2e8f0;">Top 10 Countries by PM₂.₅ Exposure</h5>
-                        </div>
-                    </div>
-
-                    <!-- Cardiovascular DALYs -->
-                    <div style="text-align: center;">
-                        <div
-                            style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 10px; padding: 1rem; height: 100%;">
-                            <img src="https://raw.githubusercontent.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/main/4_data_analysis/pm25_health_impact_analysis/figures/model_diagnostics/diag_plots_cardiovascular_dalys.png"
-                                alt="Cardiovascular DALYs Diagnostic Plots"
-                                style="width: 100%; height: auto; max-height: 300px; object-fit: contain; border-radius: 8px;"
-                                onerror="this.src='https://via.placeholder.com/500x300/0f172a/22d3ee?text=Cardiovascular+DALYs'">
-                            <h5 style="margin-top: 1rem; color: #e2e8f0;">Cardiovascular <a href="#glossary"
-                                    class="glossary-link">DALYs</a> Model Diagnostics</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- View More Link -->
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/tree/main/4_data_analysis/pm25_health_impact_analysis/figures"
-                        target="_blank" rel="noopener noreferrer" style="display: inline-block; 
-                    padding: 0.75rem 1.5rem; 
-                    background-color: #3b82f6; 
-                    color: white; 
-                    border-radius: 8px; 
-                    text-decoration: none; 
-                    font-weight: 600;
-                    transition: background-color 0.3s ease;">
-                        View All Visualizations
-                    </a>
-                    <p style="margin-top: 0.5rem; color: #64748b; font-size: 0.9rem;">
-                        Explore our complete collection of data visualizations and analysis figures
-                    </p>
-                </div>
-            </div>
-
-
         </div>
         </div>
     </section>
 
-    <!-- Data Tool Section -->
+    <!-- Data Tool Teaser Section -->
     <section id="data-tool-section" class="section data-tool-section">
         <div class="container">
             <h2 class="section-title fade-in">Country Profile Tool</h2>
             <p class="section-subtitle fade-in">
-                Choose a country to load its profile. Pick a year for DALY estimates (2010–2019 actuals, 2020–2030
-                predictions)
+                Explore any country's air pollution data and health impacts instantly. See current PM₂.₅ levels,
+                development status, and predicted disease burden all in one interactive dashboard.
             </p>
-
-            <!-- Shared selectors -->
-            <div class="tool-card fade-in interactive-element" style="margin-bottom: 2rem;">
-                <h3><i class="fas fa-sliders-h icon"></i> Select Country & Year</h3>
-                <div class="form-group">
-                    <label for="global-country">Country</label>
-                    <select id="global-country" class="form-control" style="height: auto;">
-                        <option value="">Select a country...</option>
-                    </select>
+            <div class="findings-grid" style="margin-bottom: 2rem;">
+                <div class="finding-card fade-in interactive-element">
+                    <div class="finding-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Country Snapshots</h3>
+                    <p style="color: #475569;">Get instant profiles showing current PM₂.₅ levels, development status
+                        (SDI), and predicted health impacts for any country.</p>
                 </div>
-                <div class="form-group">
-                    <label for="global-year">Year</label>
-                    <select id="global-year" class="form-control">
-                        <option value="">Select a year...</option>
-                    </select>
+
+                <div class="finding-card fade-in interactive-element">
+                    <div class="finding-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Research Insights</h3>
+                    <p style="color: #475569;">Use our findings to inform advocacy, research, or policy discussions
+                        about air pollution and health equity.</p>
                 </div>
             </div>
-
-            <div class="tool-grid">
-                <!-- Predictor (uses country + year) -->
-                <div>
-                    <div class="tool-card fade-in interactive-element">
-                        <h3><i class="fas fa-chart-line icon"></i> Predictor</h3>
-                        <button id="predictBtnPred" class="predict-button">Generate Prediction</button>
-                        <p id="loadingMessagePred"
-                            style="display: none; font-size: 0.9rem; color: #64748b; margin-top: 1rem;">
-                            <i class="fas fa-spinner fa-spin"></i> Loading data...
-                        </p>
-                    </div>
-
-                    <div class="result-card fade-in interactive-element" id="resultPred">
-                        <div class="result-placeholder" id="placeholderPred">
-                            <i class="fas fa-chart-pie"></i>
-                            <h4>No results yet</h4>
-                            <p>Select a country and year, then press "Generate Prediction" (or change the year).</p>
-                        </div>
-                        <div class="result-content" id="resultContentPred"></div>
-                    </div>
-                </div>
-
-                <!-- Country Profile (auto-updates on country) -->
-                <div>
-                    <div class="tool-card fade-in interactive-element">
-                        <h3><i class="fas fa-globe icon"></i> Country Profile</h3>
-                        <p style="font-size: 0.9rem; color: #64748b; margin: 0;">
-                            Auto-updates when you choose a country
-                        </p>
-                        <p id="loadingMessageProf"
-                            style="display: none; font-size: 0.9rem; color: #64748b; margin-top: 0.75rem;">
-                            <i class="fas fa-spinner fa-spin"></i> Loading data...
-                        </p>
-                    </div>
-
-                    <div class="result-card fade-in interactive-element" id="resultProf">
-                        <div class="result-placeholder" id="placeholderProf">
-                            <i class="fas fa-database"></i>
-                            <h4>No profile yet</h4>
-                            <p>Select a country to view its current PM₂.₅ and estimated DALYs.</p>
-                        </div>
-                        <div class="result-content" id="resultContentProf"></div>
-                    </div>
-                </div>
+            <div style="text-align:center;">
+                <a href="tool.html" class="cta-button"
+                    style="display:inline-block; font-size: 1.1rem; padding: 1rem 2rem;">Open the Country Profile
+                    Tool</a>
             </div>
         </div>
     </section>
 
-    <script>
-        const API_BASE_URL = 'https://atmosfear.up.railway.app/atmosfear';
-
-        const validCountries = [
-            "Afghanistan", "Albania", "Algeria", "Angola", "Argentina", "Armenia",
-            "Australia", "Austria", "Azerbaijan", "Bangladesh", "Belarus", "Belgium",
-            "Benin", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil",
-            "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada",
-            "Central African Republic", "Chad", "Chile", "China", "Colombia", "Congo",
-            "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark",
-            "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Eritrea",
-            "Estonia", "Ethiopia", "Finland", "France", "Gabon", "Gambia", "Georgia",
-            "Germany", "Ghana", "Greece", "Guatemala", "Guinea", "Guinea-Bissau",
-            "Haiti", "Honduras", "Hungary", "India", "Indonesia", "Iran", "Iraq",
-            "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan",
-            "Kazakhstan", "Kenya", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon",
-            "Lesotho", "Liberia", "Libya", "Lithuania", "Luxembourg", "Madagascar",
-            "Malawi", "Malaysia", "Mali", "Malta", "Mauritania", "Mexico", "Moldova",
-            "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia",
-            "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria",
-            "North Korea", "Norway", "Oman", "Pakistan", "Panama", "Papua New Guinea",
-            "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Romania",
-            "Russia", "Rwanda", "Saudi Arabia", "Senegal", "Serbia", "Sierra Leone",
-            "Singapore", "Slovakia", "Slovenia", "Somalia", "South Africa", "South Korea",
-            "South Sudan", "Spain", "Sri Lanka", "Sudan", "Sweden", "Switzerland",
-            "Syria", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tunisia", "Turkey",
-            "Turkmenistan", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom",
-            "United States", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Yemen",
-            "Zambia", "Zimbabwe"
-        ];
-
-        function resolveForecastBucket(year) {
-            const y = Number(year);
-            if (y >= 2010 && y <= 2019) return 'actual_values';
-            if (y >= 2020 && y <= 2030) return 'predictions';
-            throw new Error('Year must be between 2010 and 2030.');
-        }
-
-        async function fetchAtmosfearData(country, year) {
-            const url = `${API_BASE_URL}?country=${encodeURIComponent(country)}&year=${encodeURIComponent(year)}`;
-            const response = await fetch(url, { headers: { 'Accept': 'application/json' } });
-            if (!response.ok) throw new Error(`API error: ${response.status}`);
-            return response.json();
-        }
-
-        function formatNumber(value) {
-            if (value === null || value === undefined || Number.isNaN(value)) return '—';
-            const num = Number(value);
-            if (!Number.isFinite(num)) return '—';
-            return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
-        }
-
-        function getDiseaseIcon(dalyLabel) {
-            if (!dalyLabel) return 'chart-line';
-            const t = String(dalyLabel).toLowerCase();
-            if (t.includes('cardio')) return 'heartbeat';
-            if (t.includes('respiratory')) return 'lungs';
-            if (t.includes('stroke')) return 'brain';
-            if (t.includes('all-cause')) return 'notes-medical';
-            return 'chart-line';
-        }
-
-        function buildPredictorHTML(apiJson, year) {
-            const bucket = resolveForecastBucket(year);
-            const forecast = apiJson?.forecast ?? {};
-            const dalys = forecast?.[bucket] ?? {};
-            const info = forecast?.country_info ?? {};
-
-            const bucketLabel = bucket === 'actual_values' ? 'Actual (2010–2019)' : 'Predicted (2020–2030)';
-
-            const tiles = [
-                { label: 'All-cause DALYs', value: dalys['All-cause DALYs'] },
-                { label: 'Cardiovascular DALYs', value: dalys['Cardiovascular DALYs'] },
-                { label: 'Respiratory DALYs', value: dalys['Respiratory DALYs'] },
-                { label: 'Stroke DALYs', value: dalys['Stroke DALYs'] },
-            ];
-
-            return `
-        <h3 style="text-align:center; margin-bottom:1.5rem; color:#22d3ee;">
-            <i class="fas fa-chart-pie" style="margin-right: 0.5rem;"></i>
-            ${apiJson?.country ?? info?.country ?? ''} — ${year} <span style="color:#fbbf24;">${bucketLabel}</span>
-        </h3>
-
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
-            ${tiles.map(t => `
-                <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border-left: 4px solid #22d3ee;">
-                    <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem; margin-bottom:0.25rem;">
-                        <i class="fas fa-${getDiseaseIcon(t.label)}" style="color:#22d3ee;"></i>
-                        <span>${t.label}</span>
-                    </div>
-                    <div style="color:white; font-weight:bold; font-size:1.25rem;">${formatNumber(t.value)}</div>
-                </div>
-            `).join('')}
-        </div>
-
-        <div style="margin-top:1.25rem; display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem;">
-                    <i class="fas fa-chart-line" style="color:#22d3ee;"></i>
-                    <span>SDI</span>
-                </div>
-                <div style="color:white; font-weight:bold;">${formatNumber(info?.sdi)}</div>
-            </div>
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem;">
-                    <i class="fas fa-layer-group" style="color:#22d3ee;"></i>
-                    <span>SDI Category</span>
-                </div>
-                <div style="color:white; font-weight:bold;">${info?.sdi_category ?? '—'}</div>
-            </div>
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem;">
-                    <i class="fas fa-smog" style="color:#22d3ee;"></i>
-                    <span>PM₂.₅ (country-year)</span>
-                </div>
-                <div style="color:white; font-weight:bold;">${formatNumber(info?.pm25)} µg/m³</div>
-            </div>
-        </div>
-    `;
-        }
-
-        function buildProfileHTML(apiJson) {
-            const p = apiJson?.profile ?? {};
-            const f = p?.forecasts ?? {};
-
-            const forecastTiles = [
-                { label: 'All-cause DALYs', value: f['All-cause DALYs']?.predicted_dalys },
-                { label: 'Cardiovascular DALYs', value: f['Cardiovascular DALYs']?.predicted_dalys },
-                { label: 'Respiratory DALYs', value: f['Respiratory DALYs']?.predicted_dalys },
-                { label: 'Stroke DALYs', value: f['Stroke DALYs']?.predicted_dalys },
-            ];
-
-            return `
-        <h3 style="text-align:center; margin-bottom:1.5rem; color:#22d3ee;">
-            <i class="fas fa-database" style="margin-right: 0.5rem;"></i>
-            ${p?.country ?? apiJson?.country ?? ''} — Current Profile ${p?.current_year ? '(' + p.current_year + ')' : ''}
-        </h3>
-
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem;">
-                    <i class="fas fa-smog" style="color:#22d3ee;"></i>
-                    <span>Current PM₂.₅</span>
-                </div>
-                <div style="color:white; font-weight:bold;">${formatNumber(p?.current_pm25)} µg/m³</div>
-            </div>
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem;">
-                    <i class="fas fa-chart-line" style="color:#22d3ee;"></i>
-                    <span>Country SDI</span>
-                </div>
-                <div style="color:white; font-weight:bold;">${formatNumber(p?.country_sdi)}</div>
-            </div>
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem;">
-                    <i class="fas fa-filter" style="color:#22d3ee;"></i>
-                    <span>Input PM₂.₅</span>
-                </div>
-                <div style="color:white; font-weight:bold;">${formatNumber(p?.input_pm25)} µg/m³</div>
-            </div>
-            <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px;">
-                <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem;">
-                    <i class="fas fa-arrow-trend-down" style="color:#22d3ee;"></i>
-                    <span>PM₂.₅ Change</span>
-                </div>
-                <div style="color:white; font-weight:bold;">${formatNumber(p?.pm25_change)}</div>
-            </div>
-        </div>
-
-        <div style="margin-top:1.25rem;">
-            <h4 style="color:#fbbf24; margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem;">
-                <i class="fas fa-wave-square" style="color:#fbbf24;"></i>
-                Predicted DALYs (profile)
-            </h4>
-            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
-                ${forecastTiles.map(t => `
-                    <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; border-left: 4px solid #22d3ee;">
-                        <div style="display:flex; align-items:center; gap:0.5rem; color:#94a3b8; font-size:0.9rem; margin-bottom:0.25rem;">
-                            <i class="fas fa-${getDiseaseIcon(t.label)}" style="color:#22d3ee;"></i>
-                            <span>${t.label}</span>
-                        </div>
-                        <div style="color:white; font-weight:bold; font-size:1.25rem;">${formatNumber(t.value)}</div>
-                    </div>
-                `).join('')}
-            </div>
-        </div>
-    `;
-        }
-
-        function populateCountries(selectId) {
-            const sel = document.getElementById(selectId);
-            validCountries.slice().sort().forEach(country => {
-                const option = document.createElement('option');
-                option.value = country;
-                option.textContent = country;
-                sel.appendChild(option);
-            });
-        }
-
-        function populateYears(selectId) {
-            const sel = document.getElementById(selectId);
-            for (let year = 2010; year <= 2030; year++) {
-                const option = document.createElement('option');
-                option.value = String(year);
-                option.textContent = String(year);
-                sel.appendChild(option);
-            }
-        }
-
-        function setProfileLoading(isLoading) {
-            const loading = document.getElementById('loadingMessageProf');
-            loading.style.display = isLoading ? 'block' : 'none';
-        }
-
-        async function loadCountryProfile(country) {
-            const resultDiv = document.getElementById('resultContentProf');
-            const placeholder = document.getElementById('placeholderProf');
-            if (!country) return;
-
-            try {
-                placeholder.style.display = 'none';
-                setProfileLoading(true);
-                resultDiv.innerHTML = '';
-                resultDiv.classList.add('active');
-
-                // Profile is year-agnostic; use any valid year
-                const data = await fetchAtmosfearData(country, 2010);
-                setProfileLoading(false);
-                resultDiv.innerHTML = buildProfileHTML(data);
-            } catch (err) {
-                setProfileLoading(false);
-                resultDiv.innerHTML = `
-      <div style="text-align: center; padding: 2rem; color: #ef4444;">
-        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-        <h4>Error Loading Data</h4>
-        <p>${err.message || 'Failed to fetch data from the server'}</p>
-      </div>
-    `;
-            }
-        }
-
-        async function runPredictor(country, year) {
-            const resultDiv = document.getElementById('resultContentPred');
-            const placeholder = document.getElementById('placeholderPred');
-            const loading = document.getElementById('loadingMessagePred');
-
-            if (!country || !year) {
-                alert('Please select both country and year.');
-                return;
-            }
-
-            try {
-                placeholder.style.display = 'none';
-                loading.style.display = 'block';
-                resultDiv.innerHTML = '';
-                resultDiv.classList.add('active');
-
-                const data = await fetchAtmosfearData(country, year);
-                loading.style.display = 'none';
-                resultDiv.innerHTML = buildPredictorHTML(data, Number(year));
-            } catch (err) {
-                loading.style.display = 'none';
-                resultDiv.innerHTML = `
-            <div style="text-align: center; padding: 2rem; color: #ef4444;">
-                <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                <h4>Error Loading Data</h4>
-                <p>${err.message || 'Failed to fetch data from the server'}</p>
-            </div>
-        `;
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            populateCountries('global-country');
-            populateYears('global-year');
-
-            const countrySel = document.getElementById('global-country');
-            const yearSel = document.getElementById('global-year');
-
-            // Auto-load Country Profile on country selection
-            countrySel.addEventListener('change', async function () {
-                const country = this.value.trim();
-                await loadCountryProfile(country);
-                // If a year is already chosen, update predictor too
-                if (yearSel.value) {
-                    runPredictor(country, yearSel.value.trim());
-                }
-            });
-
-            // Run predictor when year changes (if a country is selected)
-            yearSel.addEventListener('change', function () {
-                const country = countrySel.value.trim();
-                const year = this.value.trim();
-                if (country && year) runPredictor(country, year);
-            });
-
-            // Manual trigger button
-            document.getElementById('predictBtnPred').addEventListener('click', function () {
-                const country = countrySel.value.trim();
-                const year = yearSel.value.trim();
-                runPredictor(country, year);
-            });
-        });
-    </script>
     <!-- What Can Be Done Section -->
-    <section id="action-section" class="section action-section">
+    <section class="section action-section">
         <div class="container">
-            <h2 class="section-title fade-in">What Can Be Done?</h2>
+            <h2 class="section-title fade-in">What Can Be Done</h2>
             <p class="section-subtitle fade-in">
-                Everyone has a role to play in addressing air pollution and protecting public health
+                Understanding the problem is just the first step. Here are concrete actions we can take to address air
+                pollution and its health impacts.
             </p>
 
-            <div class="action-grid">
+            <div class="action-grid" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="action-card fade-in interactive-element">
                     <div class="action-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-leaf"></i>
                     </div>
-                    <h3>For Individuals</h3>
-                    <p>
-                        We all have a role to play when it comes to protecting our health. If you live in an area with
-                        high pollution,
-                        try to check local air quality updates regularly and limit outdoor activity when levels are
-                        high, especially
-                        vulnerable groups such as children, the elderly, and those with chronic conditions.
-                    </p>
-                    <p>
-                        Small actions like using air purifiers indoors or choosing cleaner modes of transport can also
-                        make a difference.
-                    </p>
+                    <h3>Policy & Regulation</h3>
+                    <p>Advocate for stronger air quality standards based on <a
+                            href="https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health"
+                            target="_blank" style="color: #fbbf24; text-decoration: underline;">WHO guidelines</a>.
+                        Support policies that transition energy systems to cleaner sources.</p>
+
                 </div>
 
                 <div class="action-card fade-in interactive-element">
                     <div class="action-icon">
-                        <i class="fas fa-landmark"></i>
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3>For Policymakers & Health Authorities</h3>
-                    <p>
-                        We urge governments and environmental agencies to go beyond general air quality indices and
-                        develop a
-                        comprehensive <strong>Health-Adjusted Pollution Index</strong>, one that clearly links pollutant
-                        levels
-                        to measurable health risks.
+                    <h3>Personal Protection</h3>
+                    <p>Check air quality regularly using reliable sources or local monitoring apps.</p>
+                    <p>Follow <a
+                            href="https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health"
+                            target="_blank" style="color: #fbbf24; text-decoration: underline;">WHO guidelines</a> which
+                        recommend PM₂.₅ levels not exceeding 5μg/m³ annually.</p>
+                    <p>Limit outdoor activities on high-pollution days. Use N95 masks and air purifiers in homes and
+                        workplaces.</p>
+                </div>
+
+                <div class="action-card fade-in interactive-element">
+                    <div class="action-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Research & Data</h3>
+                    <p>Use our Country Profile Tool to explore air pollution data and health impacts specific to
+                        different regions.</p>
+                    <p>Share data-driven insights with local policymakers to advocate for evidence-based regulations.
                     </p>
-                    <p>
-                        This is about prioritizing health in every environmental policy.
-                    </p>
+                    <p>Support research into health impacts of air pollution.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sources & Glossary Section -->
-    <section id="glossary" class="section sources-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Sources & Glossary</h2>
-
-            <div class="sources-grid">
-                <div class="sources-card fade-in interactive-element">
-                    <h3>
-                        <i class="fas fa-book" style="color: #06b6d4;"></i>
-                        Sources
-                    </h3>
-                    <a href="https://vizhub.healthdata.org/gbd-results/" class="source-link">Global Burden of Disease
-                        Study (IHME)</a>
-                    <a href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/concentrations-of-fine-particulate-matter-(pm2-5)"
-                        class="source-link">Air pollution: concentrations of fine particulate matter (PM2.5), SDG
-                        11.6.2</a>
-                    <a href="https://ghdx.healthdata.org/record/global-burden-disease-study-2021-gbd-2021-socio-demographic-index-sdi-1950%E2%80%932021"
-                        class="source-link">Global Burden of Disease Study 2021 (GBD 2021) Socio-demographic Index (SDI)
-                        1950–2021</a>
-                </div>
-
-                <div class="glossary-card fade-in interactive-element">
-                    <h3>
-                        <i class="fas fa-list" style="color: #06b6d4;"></i>
-                        Glossary
-                    </h3>
-                    <table class="glossary-table">
-                        <thead>
-                            <tr>
-                                <th>Term</th>
-                                <th>Meaning</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>PM₂.₅</strong></td>
-                                <td>Fine particulate matter smaller than 2.5 micrometers in diameter. These airborne
-                                    particles can penetrate deep into the lungs and enter the bloodstream, causing
-                                    serious health effects.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>DALYs (Disability-Adjusted Life Years)</strong></td>
-                                <td>A measure of overall disease burden, calculated as the sum of years of life lost due
-                                    to premature death and years lived with disability.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>SDI (Socio-Demographic Index)</strong></td>
-                                <td>A composite index combining income, education level, and fertility rate to represent
-                                    a country's development level.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Rolling Average</strong></td>
-                                <td>A multi-year average of data used to smooth out year-to-year fluctuations and
-                                    capture longer-term trends.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Lagged Average</strong></td>
-                                <td>An average of exposure values from previous years used to estimate delayed health
-                                    effects of pollution.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Linear Regression</strong></td>
-                                <td>A basic statistical method that models the relationship between a continuous outcome
-                                    and one or more predictors by fitting a straight line. Used as a baseline to
-                                    estimate average effects of PM₂.₅.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Random Forest Regression</strong></td>
-                                <td>A machine learning method that uses an ensemble of decision trees to model complex
-                                    and nonlinear relationships between variables. Helps detect patterns missed by
-                                    linear models.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Log-Transformed Regression</strong></td>
-                                <td>A version of linear regression where the dependent variable (e.g., COVID-19 deaths)
-                                    is log-transformed to handle skewed data and stabilize variance.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Interaction Models</strong></td>
-                                <td>Regression models that test whether the effect of one variable (e.g., PM₂.₅) changes
-                                    depending on another (e.g., SDI), revealing effect modification.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Quantile Regression</strong></td>
-                                <td>A statistical technique that estimates relationships at different points (quantiles)
-                                    of the outcome distribution, such as the 25th or 75th percentile. Useful for
-                                    understanding how effects differ across countries with low vs. high disease burden.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
+    <!-- About & Contact Section -->
     <section id="about-section" class="section about-section">
         <div class="container">
             <h2 class="section-title fade-in">About Atmosfear</h2>
             <p class="section-subtitle fade-in">
+                A student-led data science research project from the MIT Emerging Talent Program
             </p>
 
             <div class="about-card fade-in interactive-element">
-
                 <p>
-                    <strong>Atmosfear</strong> is a student-led data science research project from the MIT Emerging
-                    Talent Program.
-                    We investigate the global health impacts of long-term exposure to air pollution, focusing on how
-                    socioeconomic disparities shape vulnerability.
+                    <strong>Atmosfear</strong> investigates the global health impacts of long-term exposure to air
+                    pollution,
+                    focusing on how socioeconomic disparities shape vulnerability. We bridge data science and public
+                    health
+                    to uncover hidden patterns, reveal inequities, and inform smarter global action.
                 </p>
-                <p>
-                    Our goal is to bridge data science and public health to uncover hidden patterns, reveal inequities,
-                    and inform smarter global action.
-                </p>
-                <p style="font-style: italic; color: #22d3ee; text-align: center; font-size: 1.2rem;">
+                <p style="font-style: italic; color: #22d3ee; text-align: center; font-size: 1.2rem; margin: 1.5rem 0;">
                     "We want to humanize the numbers and make the invisible visible."
                 </p>
-
                 <div class="mit-badge">
                     <div class="badge">
                         <i class="fas fa-university"></i>
@@ -2158,36 +1412,37 @@
                 </div>
             </div>
 
-            <div class="contact-section fade-in interactive-element">
-                <h4>Contact Us</h4>
+            <div id="contact" class="contact-section fade-in interactive-element">
+                <h4>Contact & Collaboration</h4>
+                <p>Interested in collaboration, media inquiries, or learning more about our research?</p>
                 <div class="contact-links">
-                    <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" class="contact-link">
-                        <i class="fab fa-github"></i> GitHub Repository
-                    </a>
                     <a href="mailto:atmosfear.group@gmail.com" class="contact-link">
                         <i class="fas fa-envelope"></i> Email Us
                     </a>
+                    <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" class="contact-link">
+                        <i class="fab fa-github"></i> GitHub Repository
+                    </a>
+                    <a href="research.html" class="contact-link">
+                        <i class="fas fa-book"></i> View Research
+                    </a>
                 </div>
-                <p style="margin-top: 1rem; color: #94a3b8; font-size: 0.9rem;">
-                    Interested in collaboration or media inquiries? Reach out to us.
-                </p>
             </div>
+        </div>
+    </section>
 
-            <div
-                style="margin-top: 2rem; padding: 1.5rem; background: rgba(0,0,0,0.3); border-radius: 8px; text-align: center;">
-                <p style="color: #94a3b8; font-size: 0.9rem;">
-                    <strong>Legal & Acknowledgements:</strong> This site is for research communication purposes only.
-                    Data used is sourced from IHME GBD and WHO. All findings are based on statistical modeling and
-                    should not be used for clinical or policy decisions without further validation.
-                </p>
+    <!-- Legal & Acknowledgements Section -->
+    <section class="legal-section">
+        <div class="legal-container">
+            <div class="legal-content">
+                <h4>Legal & Acknowledgements</h4>
+                <p>This site is for research communication purposes only. Data used is sourced from IHME GBD and WHO.
+                    All findings are based on statistical modeling and should not be used for clinical or policy
+                    decisions without further validation.</p>
             </div>
         </div>
     </section>
 
     <script>
-        // Sample DALY data (will be replaced with real dataset)
-
-
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -2197,7 +1452,7 @@
                     const offsetTop = target.offsetTop - 80; // Account for fixed navbar
                     window.scrollTo({
                         top: offsetTop,
-                        behavior: 'smooth'
+                        behavior: 'auto'
                     });
                 }
             });
@@ -2220,15 +1475,6 @@
         // Observe all fade-in elements
         document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
-        });
-
-        // Parallax effect for hero background
-        window.addEventListener('scroll', function () {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
         });
 
         // Add interactive hover effects
@@ -2265,7 +1511,6 @@
 
         // Call the function after the DOM is loaded
         document.addEventListener('DOMContentLoaded', applyGlossaryLinks);
-
     </script>
 </body>
 
