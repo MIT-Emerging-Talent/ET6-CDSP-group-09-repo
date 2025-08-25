@@ -9,7 +9,8 @@ on the health impacts of PM2.5 exposure globally. We've come a long way!
 
 ## 📂 Presentation
 
-[**Final_Presentation.pptx**](./Final_Presentation.pptx) , Click to download and
+[**Final_Presentation.pptx**](atmosfear_final_presentation.pptx)
+, Click to download and
 explore our slides.
 
 ## 🎬 Behind the Scenes
