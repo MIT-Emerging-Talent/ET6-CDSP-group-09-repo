@@ -224,6 +224,11 @@ The [`5_communication_strategy`](5_communication_strategy/) folder includes:
 
 ---
 
+[![Typing SVG][badge-23]](https://git.io/typing-svg)  
+Finally, The [`6_final_presentation`](6_final_presentation/) folder includes the slides summarizing our research on the global health impacts of PM2.5 exposure and captures all our findings in a clear, engaging story.
+
+---
+
 ## [![Typing SVG][badge-19]](https://git.io/typing-svg)
 
 - [Our Norms](https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo/blob/main/collaboration/README.md)
@@ -328,3 +333,4 @@ The [`5_communication_strategy`](5_communication_strategy/) folder includes:
 [badge-20]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=520&lines=Non+Technical+Explanation+of+Data+Analysis
 [badge-21]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=520&lines=Communicating+Our+Results
 [badge-22]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=520&lines=Communication+Strategy
+[badge-23]:https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&pause=1000&color=B6871ED2&width=520&lines=Final+Presentation
