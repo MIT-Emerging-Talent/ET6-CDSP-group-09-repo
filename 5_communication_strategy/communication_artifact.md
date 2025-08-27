@@ -51,7 +51,7 @@ justice._
 public health researchers, policymakers, and international organizations.  
 
 **Website Link:**  
-[Project Website](<https://mit-emerging-talent.github.io/ET6-CDSP-group-09-repo/atmosfear-website/>)
+[Project Website](https://mit-emerging-talent.github.io/ET6-CDSP-group-09-repo/atmosfear-website/)
 
 **Key Features:**  
 
