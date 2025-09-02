@@ -13,7 +13,6 @@
             box-sizing: border-box;
         }
 
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -91,7 +90,6 @@
             display: flex;
             list-style: none;
             gap: 1.5rem;
-            /* Reduced gap */
         }
 
         .nav-links a {
@@ -119,6 +117,14 @@
         }
 
         .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: #22d3ee;
+        }
+
+        .nav-links a.active::after {
             width: 100%;
         }
 
@@ -249,6 +255,19 @@
             font-weight: bold;
             margin-bottom: 1rem;
             color: #0f172a;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            border-radius: 2px;
         }
 
         .section-subtitle {
@@ -302,7 +321,7 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
@@ -391,6 +410,11 @@
             border-radius: 12px;
             text-align: center;
             border: 2px dashed #22d3ee;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .visual-placeholder i {
@@ -622,13 +646,6 @@
             margin-bottom: 3rem;
         }
 
-        @media (max-width: 768px) {
-            .findings-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-            }
-        }
-
         .finding-card {
             background: white;
             padding: 2rem;
@@ -831,6 +848,11 @@
             color: #cbd5e1;
         }
 
+        .action-grid-wrapper {
+            overflow: hidden;
+            margin-bottom: 3rem;
+        }
+
         .action-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1003,34 +1025,234 @@
             font-weight: 600;
         }
 
+        /* Contact Section */
         .contact-section {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .contact-section h4 {
-            color: #22d3ee;
-            margin-bottom: 1rem;
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(6,182,212,0.1)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+            background-size: cover;
+        }
+
+        .contact-section .section-title {
+            color: white;
+        }
+
+        .contact-section .section-subtitle {
+            color: #cbd5e1;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
         }
 
         .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
 
         .contact-link {
             color: #e2e8f0;
             text-decoration: none;
-            transition: color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .contact-link:hover {
             color: #22d3ee;
+            background: rgba(34, 211, 238, 0.15);
+            transform: translateY(-5px);
+            border-color: rgba(34, 211, 238, 0.3);
+        }
+
+        .contact-link i {
+            font-size: 2rem;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(34, 211, 238, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover i {
+            background: rgba(34, 211, 238, 0.3);
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #cbd5e1;
+            padding: 4rem 0 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        .footer-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: #06b6d4;
+            transform: translateY(-3px);
+        }
+
+        .footer-col h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #06b6d4;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-copyright {
+            color: #94a3b8;
+        }
+
+        .footer-credits {
+            color: #94a3b8;
+            opacity: 0.8;
         }
 
         /* Floating Animation */
@@ -1120,50 +1342,707 @@
             transform: scale(1.02);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .mobile-menu {
-                display: block;
-            }
-
-            .pm25-grid,
-            .tool-grid,
-            .sources-grid,
-            .methods-grid,
-            .action-grid {
-                grid-template-columns: 1fr;
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 1024px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
                 gap: 2rem;
             }
 
-            .findings-grid {
-                grid-template-columns: 1fr;
+            .footer-brand {
+                grid-column: 1 / -1;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
             }
 
             .section {
                 padding: 60px 0;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .hero {
+                height: 60vh;
+                background-attachment: scroll;
             }
 
-            .cta-buttons {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Navigation */
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.98);
                 flex-direction: column;
-                align-items: center;
+                padding: 1rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                background: rgba(34, 211, 238, 0.1);
+                transform: none;
+            }
+
+            .mobile-menu {
+                display: block;
+                padding: 0.5rem;
+                border-radius: 6px;
+                transition: all 0.3s ease;
+            }
+
+            .mobile-menu:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+
+            /* Hero Section */
+            .hero {
+                height: 80vh;
+                padding-top: 80px;
+                text-align: center;
+                background-attachment: scroll;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+                line-height: 1.2;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero .description {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            /* Sections */
+            .section {
+                padding: 50px 0;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 2.5rem;
+                line-height: 1.6;
+            }
+
+            /* Why This Matters Section */
+            .why-matters-card {
+                padding: 1.5rem;
+                margin-bottom: 2rem;
+                border-radius: 12px;
+            }
+
+            .why-matters-card .highlight-text {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
             }
 
             .stats-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .stat-item {
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .stat-label {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            /* PM2.5 Section */
+            .pm25-grid,
+            .tool-grid,
+            .sources-grid,
+            .methods-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* Action Grid - Horizontal Scroll on Mobile */
+            .action-grid-wrapper {
+                overflow-x: auto;
+                overflow-y: hidden;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                /* Firefox */
+                -ms-overflow-style: none;
+                /* IE and Edge */
+                padding-bottom: 1rem;
+            }
+
+            .action-grid-wrapper::-webkit-scrollbar {
+                display: none;
+                /* Chrome, Safari, Opera */
+            }
+
+            .action-grid {
+                display: flex;
+                gap: 1.5rem;
+                min-width: max-content;
+                padding: 0 1rem;
+            }
+
+            .action-card {
+                min-width: 280px;
+                max-width: 320px;
+                flex-shrink: 0;
+                padding: 2rem;
+                border-radius: 12px;
+            }
+
+            .pm25-content,
+            .methods-content,
+            .tool-card {
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .pm25-content h3,
+            .methods-content h3,
+            .tool-card h3 {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+
+            .findings-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .finding-card {
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+
+            .finding-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .finding-card p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            /* CTA Buttons */
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                padding: 1.2rem 2rem;
+                font-size: 1.1rem;
+                min-width: 200px;
+                text-align: center;
+            }
+
+            /* Contact Section */
+            .contact-card {
+                padding: 1.5rem;
+                border-radius: 12px;
+            }
+
+            .contact-links {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .contact-link {
+                padding: 1.5rem;
+                text-align: center;
+                border-radius: 10px;
+                min-height: 70px;
+            }
+
+            .contact-link i {
+                font-size: 1.8rem;
+                width: 50px;
+                height: 50px;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-link strong {
+                font-size: 1rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .contact-link p {
+                font-size: 0.9rem;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 3rem 0 1rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2.5rem;
+            }
+
+            .footer-col h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-social {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .footer-bottom {
+                margin-top: 2rem;
+                padding-top: 1.5rem;
+            }
+
+            /* Action Cards - Enhanced for horizontal scroll */
+            .action-card {
+                padding: 2rem;
+                border-radius: 12px;
+                background: rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(10px);
+            }
+
+            .action-card h3 {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .action-card p {
+                font-size: 1rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            /* Data Sources */
+            .data-sources {
+                padding: 2rem;
+                border-radius: 12px;
+            }
+
+            .data-sources .source-item {
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Form Controls */
+            .form-control {
+                padding: 1rem;
+                font-size: 1rem;
+                border-radius: 8px;
+            }
+
+            .predict-button {
+                padding: 1rem;
+                font-size: 1.1rem;
+                border-radius: 8px;
+            }
+
+            /* Legal Section */
+            .legal-section {
+                padding: 2rem 0;
+            }
+
+            .legal-content {
+                padding: 2rem;
+                border-radius: 12px;
             }
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
+        @media (max-width: 480px) {
+
+            /* Mobile-first approach for small screens */
+            .container {
+                padding: 0 20px;
+            }
+
+            /* Hero */
+            .hero {
+                height: 75vh;
+                padding-top: 90px;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero .description {
+                font-size: 0.9rem;
+                line-height: 1.6;
+                margin-bottom: 2rem;
+            }
+
+            /* Navigation */
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+
+            /* Sections */
+            .section {
+                padding: 40px 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
+
+            /* Why This Matters */
+            .why-matters-card {
+                padding: 1.2rem;
+                border-radius: 10px;
+            }
+
+            .why-matters-card .highlight-text {
+                font-size: 0.95rem;
+                line-height: 1.5;
+                margin-bottom: 1.5rem;
+            }
+
+            .stats-grid {
+                gap: 1rem;
+                margin: 2rem 0;
+            }
+
+            .stat-item {
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .stat-number {
+                font-size: 2.2rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.95rem;
+                line-height: 1.4;
+            }
+
+            /* Cards and Content */
+            .pm25-content,
+            .methods-content,
+            .tool-card,
+            .finding-card {
+                padding: 1.2rem;
+                border-radius: 10px;
+            }
+
+            .pm25-content h3,
+            .methods-content h3,
+            .tool-card h3,
+            .finding-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .pm25-content p,
+            .methods-content p,
+            .tool-card p,
+            .finding-card p {
+                font-size: 0.9rem;
+                line-height: 1.5;
+            }
+
+            /* Action Cards for small screens */
+            .action-card {
+                min-width: 260px;
+                max-width: 300px;
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .action-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .action-card p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            /* CTA Buttons */
+            .cta-button {
+                padding: 1rem 1.8rem;
+                font-size: 1rem;
+                min-width: 180px;
+                border-radius: 8px;
+            }
+
+            /* Contact */
+            .contact-card {
+                padding: 2rem;
+                border-radius: 12px;
+            }
+
+            .contact-link {
+                padding: 1.5rem;
+                font-size: 0.95rem;
+                border-radius: 10px;
+                min-height: 70px;
+            }
+
+            .contact-link i {
+                font-size: 1.8rem;
+                width: 50px;
+                height: 50px;
+                margin-bottom: 0.8rem;
+            }
+
+            .contact-link strong {
+                font-size: 1rem;
+                margin-bottom: 0.4rem;
+            }
+
+            .contact-link p {
+                font-size: 0.9rem;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 2.5rem 0 1rem;
+            }
+
+            .footer-logo {
+                font-size: 1.6rem;
+            }
+
+            .footer-logo-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 1.3rem;
+            }
+
+            .footer-description {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+
+            .social-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 1.1rem;
+            }
+
+            .footer-links a {
+                font-size: 0.95rem;
+                padding: 0.3rem 0;
+            }
+
+            .footer-bottom {
+                font-size: 0.85rem;
+                margin-top: 1.5rem;
+                padding-top: 1rem;
+            }
+
+            /* Form Controls */
+            .form-control {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+            }
+
+            .predict-button {
+                padding: 0.9rem;
+                font-size: 1rem;
+            }
+
+            /* Legal Section */
+            .legal-content {
+                padding: 1.5rem;
+                border-radius: 10px;
+            }
+
+            .legal-content h4 {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .legal-content p {
+                font-size: 0.85rem;
+                line-height: 1.5;
+            }
+        }
+
+        /* Landscape phone orientation */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                height: 80vh;
+                padding-top: 90px;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .section {
+                padding: 30px 0;
+            }
+        }
+
+        /* Touch-friendly improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .interactive-element:hover {
+                transform: none;
+            }
+
+            /* Larger touch targets */
+            .nav-links a {
+                padding: 1.2rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .social-icon {
+                min-width: 44px;
+                min-height: 44px;
+            }
+
+            .contact-link {
+                min-height: 60px;
+            }
+
+            .cta-button {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-menu {
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Remove hover effects on touch devices */
+            .nav-links a:hover,
+            .cta-button:hover,
+            .contact-link:hover,
+            .social-icon:hover,
+            .action-card:hover,
+            .finding-card:hover {
+                transform: none;
+            }
+
+            /* Add active states for touch feedback */
+            .nav-links a:active,
+            .cta-button:active,
+            .contact-link:active,
+            .social-icon:active {
+                opacity: 0.7;
+                transform: scale(0.98);
+            }
+        }
+
+        /* Improved scrolling on mobile */
+        @media (max-width: 768px) {
+            html {
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+
+        /* Prevent horizontal scroll on mobile */
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            .container,
+            .nav-container,
+            .footer-container {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
         }
 
         /* Legal Section Styles */
@@ -1217,17 +2096,17 @@
     <!-- Navigation Bar -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon floating">
                     <i class="fas fa-wind"></i>
                 </div>
                 Atmosfear
             </a>
             <ul class="nav-links">
-                <li><a href="#index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="tool.html">Country Profile Tool</a></li>
                 <li><a href="research.html">Research</a></li>
-                <li><a href="#about-section">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
@@ -1288,14 +2167,13 @@
                         <div class="stat-number">2-3x</div>
                         <div class="stat-label">Higher impact in less-developed countries</div>
                     </div>
-
                     <div class="stat-item fade-in">
                         <div class="stat-number">5μg/m³</div>
                         <div class="stat-label">WHO guideline for safe PM₂.₅ levels - most places exceed this</div>
                     </div>
                 </div>
+
             </div>
-        </div>
         </div>
     </section>
 
@@ -1343,87 +2221,81 @@
                 pollution and its health impacts.
             </p>
 
-            <div class="action-grid" style="grid-template-columns: repeat(3, 1fr);">
-                <div class="action-card fade-in interactive-element">
-                    <div class="action-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Policy & Regulation</h3>
-                    <p>Advocate for stronger air quality standards based on <a
-                            href="https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health"
-                            target="_blank" style="color: #fbbf24; text-decoration: underline;">WHO guidelines</a>.
-                        Support policies that transition energy systems to cleaner sources.</p>
+            <div class="action-grid-wrapper">
+                <div class="action-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="action-card fade-in interactive-element">
+                        <div class="action-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Policy & Regulation</h3>
+                        <p>Advocate for stronger air quality standards based on <a
+                                href="https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health"
+                                target="_blank" style="color: #fbbf24; text-decoration: underline;">WHO guidelines</a>.
+                            Support policies that transition energy systems to cleaner sources.</p>
 
-                </div>
-
-                <div class="action-card fade-in interactive-element">
-                    <div class="action-icon">
-                        <i class="fas fa-heart"></i>
                     </div>
-                    <h3>Personal Protection</h3>
-                    <p>Check air quality regularly using reliable sources or local monitoring apps.</p>
-                    <p>Follow <a
-                            href="https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health"
-                            target="_blank" style="color: #fbbf24; text-decoration: underline;">WHO guidelines</a> which
-                        recommend PM₂.₅ levels not exceeding 5μg/m³ annually.</p>
-                    <p>Limit outdoor activities on high-pollution days. Use N95 masks and air purifiers in homes and
-                        workplaces.</p>
-                </div>
 
-                <div class="action-card fade-in interactive-element">
-                    <div class="action-icon">
-                        <i class="fas fa-chart-line"></i>
+                    <div class="action-card fade-in interactive-element">
+                        <div class="action-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Personal Protection</h3>
+                        <p>Check air quality regularly using reliable sources or local monitoring apps.</p>
+                        <p>Follow <a
+                                href="https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health"
+                                target="_blank" style="color: #fbbf24; text-decoration: underline;">WHO guidelines</a>
+                            which recommend PM₂.₅ levels not exceeding 5μg/m³ annually.</p>
+                        <p>Limit outdoor activities on high-pollution days. Use N95 masks and air purifiers in homes and
+                            workplaces.</p>
                     </div>
-                    <h3>Research & Data</h3>
-                    <p>Use our Country Profile Tool to explore air pollution data and health impacts specific to
-                        different regions.</p>
-                    <p>Share data-driven insights with local policymakers to advocate for evidence-based regulations.
-                    </p>
-                    <p>Support research into health impacts of air pollution.</p>
+
+                    <div class="action-card fade-in interactive-element">
+                        <div class="action-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Research & Data</h3>
+                        <p>Use our Country Profile Tool to explore air pollution data and health impacts specific to
+                            different regions.</p>
+                        <p>Share data-driven insights with local policymakers to advocate for evidence-based
+                            regulations.</p>
+                        <p>Support research into health impacts of air pollution.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About & Contact Section -->
-    <section id="about-section" class="section about-section">
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title fade-in">About Atmosfear</h2>
+            <h2 class="section-title fade-in">Get In Touch</h2>
             <p class="section-subtitle fade-in">
-                A student-led data science research project from the MIT Emerging Talent Program
+                Interested in collaboration, media inquiries, or learning more about our research? We'd love to hear
+                from you.
             </p>
 
-            <div class="about-card fade-in interactive-element">
-                <p>
-                    <strong>Atmosfear</strong> investigates the global health impacts of long-term exposure to air
-                    pollution,
-                    focusing on how socioeconomic disparities shape vulnerability. We bridge data science and public
-                    health
-                    to uncover hidden patterns, reveal inequities, and inform smarter global action.
-                </p>
-                <p style="font-style: italic; color: #22d3ee; text-align: center; font-size: 1.2rem; margin: 1.5rem 0;">
-                    "We want to humanize the numbers and make the invisible visible."
-                </p>
-                <div class="mit-badge">
-                    <div class="badge">
-                        <i class="fas fa-university"></i>
-                        <span>Part of MIT Emerging Talent Program</span>
-                    </div>
-                </div>
-            </div>
-
-            <div id="contact" class="contact-section fade-in interactive-element">
-                <h4>Contact & Collaboration</h4>
-                <p>Interested in collaboration, media inquiries, or learning more about our research?</p>
+            <div class="contact-card fade-in interactive-element">
                 <div class="contact-links">
                     <a href="mailto:atmosfear.group@gmail.com" class="contact-link">
-                        <i class="fas fa-envelope"></i> Email Us
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email Us</strong>
+                            <p>atmosfear.group@gmail.com</p>
+                        </div>
                     </a>
                     <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" class="contact-link">
-                        <i class="fab fa-github"></i> GitHub Repository
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <strong>GitHub Repository</strong>
+                            <p>View our code & research</p>
+                        </div>
                     </a>
                     <a href="research.html" class="contact-link">
-                        <i class="fas fa-book"></i> View Research
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <strong>Research</strong>
+                            <p>Read our findings</p>
+                        </div>
                     </a>
                 </div>
             </div>
@@ -1442,23 +2314,86 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Brand Section -->
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="footer-logo-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    Atmosfear
+                </div>
+                <p class="footer-description">
+                    Making air pollution's health impacts visible through data science and innovative research.
+                </p>
+                <div class="footer-social">
+                    <a href="mailto:atmosfear.group@gmail.com" class="social-icon" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" class="social-icon"
+                        title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tool.html">Country Tool</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Resources -->
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="https://www.healthdata.org/">IHME GBD Data</a></li>
+                    <li><a
+                            href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/concentrations-of-fine-particulate-matter-(pm2-5)">WHO</a>
+                    </li>
+                    <li><a href="research.html#methodology">Methodology</a></li>
+                    <li><a href="research.html#findings">Key Findings</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-copyright">
+                <p>&copy; 2025 Atmosfear - MIT Emerging Talent Program</p>
+            </div>
+
+            <div class="footer-credits">
+                <p>Built with passion for global health</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Smooth scrolling for anchor links
+        // Enhanced smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                    const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
                         top: offsetTop,
-                        behavior: 'auto'
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // Intersection Observer for animations
+        // Enhanced Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1477,15 +2412,69 @@
             observer.observe(el);
         });
 
-        // Add interactive hover effects
+        // Enhanced interactive hover effects
         document.querySelectorAll('.interactive-element').forEach(element => {
             element.addEventListener('mouseenter', function () {
-                this.style.transform = 'scale(1.02)';
+                if (!this.classList.contains('team-member')) {
+                    this.style.transform = 'scale(1.02)';
+                }
             });
 
             element.addEventListener('mouseleave', function () {
-                this.style.transform = 'scale(1)';
+                if (!this.classList.contains('team-member')) {
+                    this.style.transform = 'scale(1)';
+                }
             });
+        });
+
+        // Navbar scroll effect with enhanced styling
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu functionality
+        document.querySelector('.mobile-menu').addEventListener('click', function () {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+
+            // Change hamburger to X when open
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('show')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.querySelector('.nav-links');
+                const mobileMenu = document.querySelector('.mobile-menu i');
+                navLinks.classList.remove('show');
+                mobileMenu.classList.remove('fa-times');
+                mobileMenu.classList.add('fa-bars');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function (e) {
+            const navbar = document.querySelector('.navbar');
+            const navLinks = document.querySelector('.nav-links');
+            const mobileMenu = document.querySelector('.mobile-menu');
+
+            if (!navbar.contains(e.target) && navLinks.classList.contains('show')) {
+                navLinks.classList.remove('show');
+                mobileMenu.querySelector('i').classList.remove('fa-times');
+                mobileMenu.querySelector('i').classList.add('fa-bars');
+            }
         });
 
         // Custom function to handle glossary links to prevent over-linking

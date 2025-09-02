@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Atmosfear</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(15, 23, 42, 0.98);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: #22d3ee;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #22d3ee;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: #22d3ee;
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .mobile-menu {
+      display: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 70vh;
+      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.7)), url('https://i.natgeofe.com/n/d27039ac-a036-4b46-87aa-ec60eb593700/6-9-23-NG-Smoke-9.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      padding-top: 80px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 0 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: bold;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero .highlight {
+      color: #fbbf24;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero .description {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      margin-bottom: 2rem;
+      color: #e2e8f0;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      line-height: 1.6;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 80px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #0f172a;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #475569;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+    }
+
+    /* About Section */
+    .about-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .about-card {
+      background: white;
+      padding: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15);
+      border: 1px solid #bae6fd;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    }
+
+    .about-card h3 {
+      color: #06b6d4;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .about-card .icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .about-card p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #334155;
+      margin-bottom: 1.5rem;
+    }
+
+    .mission-quote {
+      font-style: italic;
+      color: #06b6d4;
+      text-align: center;
+      font-size: 1.4rem;
+      margin: 2rem 0;
+      padding: 2.5rem;
+      background: rgba(6, 182, 212, 0.1);
+      border-radius: 12px;
+      border-left: 4px solid #06b6d4;
+      position: relative;
+    }
+
+    .mission-quote::before {
+      content: '"';
+      font-size: 4rem;
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      color: #06b6d4;
+      opacity: 0.3;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .stat-card {
+      background: rgba(6, 182, 212, 0.1);
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid rgba(6, 182, 212, 0.2);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #06b6d4;
+      display: block;
+    }
+
+    .stat-label {
+      color: #475569;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    .mit-badge {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .mit-badge .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+    }
+
+    /* Team Section */
+    .team-section {
+      background: white;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .team-member {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(6, 182, 212, 0.1);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-member::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover::before {
+      transform: scaleX(1);
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(6, 182, 212, 0.2);
+    }
+
+    .team-member .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 4px solid #06b6d4;
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover .avatar {
+      transform: scale(1.05);
+    }
+
+    .team-member h4 {
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    .team-member .role {
+      color: #06b6d4;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .team-member p {
+      color: #475569;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .member-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f172a;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .social-link:hover {
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      color: white;
+      transform: translateY(-3px) scale(1.1);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: white;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="rgba(6,182,212,0.1)"><polygon points="0,100 1000,0 1000,100"/></svg>');
+      background-size: cover;
+    }
+
+    .contact-section .section-title {
+      color: white;
+    }
+
+    .contact-section .section-subtitle {
+      color: #cbd5e1;
+    }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 3rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .contact-link {
+      color: #e2e8f0;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .contact-link:hover {
+      color: #22d3ee;
+      background: rgba(34, 211, 238, 0.15);
+      transform: translateY(-5px);
+      border-color: rgba(34, 211, 238, 0.3);
+    }
+
+    .contact-link i {
+      font-size: 2rem;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(34, 211, 238, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover i {
+      background: rgba(34, 211, 238, 0.3);
+      transform: scale(1.1);
+    }
+
+    /* Enhanced Footer Styles */
+    .footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #cbd5e1;
+      padding: 4rem 0 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    .footer-description {
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      font-size: 1rem;
+      color: #94a3b8;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
+    }
+
+    .social-icon:hover {
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 8px 20px rgba(6, 182, 212, 0.3);
+    }
+
+    .footer-col h3 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: #06b6d4;
+      transform: translateX(5px);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-copyright {
+      color: #94a3b8;
+    }
+
+    .footer-credits {
+      color: #94a3b8;
+      opacity: 0.8;
+    }
+
+    /* Interactive elements */
+    .interactive-element {
+      transition: all 0.3s ease;
+    }
+
+    .interactive-element:hover {
+      transform: scale(1.02);
+    }
+
+    /* Floating Animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Enhanced Mobile Responsiveness */
+    @media (max-width: 1024px) {
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .hero {
+        height: 60vh;
+        background-attachment: scroll;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      /* Navigation */
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(15, 23, 42, 0.98);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 50vh;
+        padding-top: 60px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero .description {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Sections */
+      .section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      /* About Section */
+      .about-card {
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .mission-quote {
+        padding: 1.5rem;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .stat-card {
+        padding: 1.5rem;
+      }
+
+      .stat-number {
+        font-size: 2rem;
+      }
+
+      /* Team Section */
+      .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .team-member {
+        padding: 2rem;
+      }
+
+      .team-member .avatar {
+        width: 100px;
+        height: 100px;
+      }
+
+      /* Contact Section */
+      .contact-card {
+        padding: 2rem;
+      }
+
+      .contact-links {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .contact-link {
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .contact-link i {
+        font-size: 1.5rem;
+        width: 50px;
+        height: 50px;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        margin-top: 2rem;
+        padding-top: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      /* Mobile-first approach for small screens */
+      .container {
+        padding: 0 15px;
+      }
+
+      /* Hero */
+      .hero {
+        height: 40vh;
+        padding-top: 80px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+
+      .hero .description {
+        font-size: 1rem;
+      }
+
+      /* Navigation */
+      .nav-container {
+        padding: 0 15px;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+      }
+
+      .logo-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+
+      /* Sections */
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .about-card {
+        padding: 1.5rem;
+      }
+
+      .mission-quote {
+        font-size: 1rem;
+        padding: 1rem;
+      }
+
+      .stats-grid {
+        gap: 0.8rem;
+      }
+
+      .stat-card {
+        padding: 1rem;
+      }
+
+      .stat-number {
+        font-size: 1.8rem;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+      }
+
+      /* Team members */
+      .team-member {
+        padding: 1.5rem;
+      }
+
+      .team-member .avatar {
+        width: 80px;
+        height: 80px;
+      }
+
+      .team-member h4 {
+        font-size: 1.2rem;
+      }
+
+      .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+
+      /* Contact */
+      .contact-card {
+        padding: 1.5rem;
+      }
+
+      .contact-link {
+        padding: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .contact-link i {
+        font-size: 1.3rem;
+        width: 40px;
+        height: 40px;
+      }
+
+      /* Footer */
+      .footer-logo {
+        font-size: 1.5rem;
+      }
+
+      .footer-logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      .footer-description {
+        font-size: 0.9rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .footer-links a {
+        font-size: 0.9rem;
+      }
+
+      .footer-bottom {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Landscape phone orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .hero {
+        height: 70vh;
+      }
+
+      .nav-container {
+        padding: 0 20px;
+      }
+    }
+
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+      .interactive-element:hover {
+        transform: none;
+      }
+
+      .team-member:hover {
+        transform: none;
+      }
+
+      .team-member:hover .avatar {
+        transform: none;
+      }
+
+      .social-link:hover,
+      .social-icon:hover {
+        transform: none;
+      }
+
+      /* Larger touch targets */
+      .nav-links a {
+        padding: 15px 0;
+      }
+
+      .social-link,
+      .social-icon {
+        min-width: 44px;
+        min-height: 44px;
+      }
+
+      .contact-link {
+        min-height: 60px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .hero {
+        height: 60vh;
+        background-attachment: scroll;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      /* Navigation */
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(15, 23, 42, 0.98);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .contact-links {
+        grid-template-columns: 1fr;
+      }
+
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .about-card {
+        padding: 2rem;
+      }
+
+      .mission-quote {
+        padding: 1.5rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero .description {
+        font-size: 1rem;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Loading animation */
+    .loading {
+      opacity: 0;
+      animation: loadIn 0.8s ease-out forwards;
+    }
+
+    @keyframes loadIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon floating">
+          <i class="fas fa-wind"></i>
+        </div>
+        Atmosfear
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tool.html">Country Profile Tool</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Meet the <span class="highlight">Atmosfear</span> Team</h1>
+      <p class="description">
+        Passionate students from the MIT Emerging Talent Program working to make air pollution's health impacts visible
+        and actionable through innovative data science.
+      </p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section about-section">
+    <div class="container">
+      <h2 class="section-title fade-in">About Atmosfear</h2>
+
+      <div class="about-card fade-in interactive-element">
+        <p>
+          <strong>Atmosfear</strong> investigates the global health impacts of air pollution,
+          focusing on how socioeconomic disparities shape vulnerability. We use data science
+          to uncover hidden patterns and make complex research accessible through our interactive tools.
+        </p>
+
+        <div class="mission-quote">
+          We want to humanize the numbers and make the invisible visible.
+        </div>
+
+
+
+        <div class="mit-badge">
+          <div class="badge">
+            <i class="fas fa-university"></i>
+            <span>Part of MIT Emerging Talent Program</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="section team-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Our Team</h2>
+      <p class="section-subtitle fade-in">
+        A diverse group of engineers and students passionate about using data science to address global health
+        challenges
+      </p>
+
+      <div class="team-grid">
+        <!-- Team Member 1 -->
+        <div class="team-member fade-in interactive-element loading">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4E03AQE4VSZdUSZ6wg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1732392638998?e=1759363200&v=beta&t=kPZ6VSgLn7DbTXxX8GtbNqM0T9DCSU06PL7aXbUwQYU"
+            alt="Linah Khayri" class="avatar">
+          <h4>Linah Khayri</h4>
+          <div class="role">Aspiring Data Scientist</div>
+          <div class="member-social">
+            <a href="https://www.linkedin.com/in/linah-khayri-474476339" class="social-link"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/linahKhayri" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-member fade-in interactive-element loading">
+          <img
+            src="https://media.licdn.com/dms/image/v2/D4E03AQEzABYIF8wDhw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1718909040408?e=1759363200&v=beta&t=x_ncVw0Cw3aKj1_MworqpcDx-tqDETBStu5wZCHz0T0"
+            alt="Sa'id Ibrahim" class="avatar">
+          <h4>Sa'id Ibrahim</h4>
+          <div class="role">Aspiring Data Scientist</div>
+          <div class="member-social">
+            <a href="https://www.linkedin.com/in/sisar?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BXH6BH25kSaayOy9ycz8ReQ%3D%3D"
+              class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/SiSaR-Pal" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-member fade-in interactive-element loading">
+          <img src="https://avatars.githubusercontent.com/u/189139604?v=4" alt="Falaq Abdulmajeed" class="avatar">
+          <h4>Falaq Abdulmajeed</h4>
+          <div class="role">Aspiring Data Scientist</div>
+          <div class="member-social">
+            <a href="https://www.linkedin.com/in/falag-abdulmajeed-90598926b" class="social-link"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/FalaqMajeed" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-member fade-in interactive-element loading">
+          <img
+            src="https://media.licdn.com/dms/image/v2/C5603AQFrSrttqxJxcw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1516809886615?e=1759363200&v=beta&t=KBh2hLPkgQcY7khaGAHaYCDv9Wr1aA0bLvHpKa96444"
+            alt="Saliha Kalender" class="avatar">
+          <h4>Saliha Kalender</h4>
+          <div class="role">Aspiring Data Scientist</div>
+          <div class="member-social">
+            <a href="https://www.linkedin.com/in/saadet-kalender-4094b086?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+              class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/salihakalender" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Team Member 5 -->
+        <div class="team-member fade-in interactive-element loading">
+          <img
+            src="https://media.licdn.com/dms/image/v2/C4E03AQEbwKeIXKGobQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517020085287?e=1759363200&v=beta&t=fY6Jnca3_VDmFphpeNXoyzRgdKmN6dlMtBMEUmAJfEk"
+            alt="Salih Adam" class="avatar">
+          <h4>Salih Adam</h4>
+          <div class="role">Aspiring Data Scientist</div>
+          <div class="member-social">
+            <a href="https://www.linkedin.com/in/adam090/" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Adamx090" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Team Member 6 -->
+        <div class="team-member fade-in interactive-element loading">
+          <img src="https://avatars.githubusercontent.com/u/189177670?v=4" alt="Mohamed Tilal" class="avatar">
+          <h4>Mohamed Tilal</h4>
+          <div class="role">Aspiring Data Scientist</div>
+          <div class="member-social">
+            <a href="http://www.linkedin.com/in/mohamed-tilal/" class="social-link"><i
+                class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/Mohamedmxz" class="social-link"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Get In Touch</h2>
+      <p class="section-subtitle fade-in">
+        Interested in collaboration, media inquiries, or learning more about our research? We'd love to hear from you.
+      </p>
+
+      <div class="contact-card fade-in interactive-element">
+        <div class="contact-links">
+          <a href="mailto:atmosfear.group@gmail.com" class="contact-link">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email Us</strong>
+              <p>atmosfear.group@gmail.com</p>
+            </div>
+          </a>
+          <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" class="contact-link">
+            <i class="fab fa-github"></i>
+            <div>
+              <strong>GitHub Repository</strong>
+              <p>View our code & research</p>
+            </div>
+          </a>
+          <a href="research.html" class="contact-link">
+            <i class="fas fa-book"></i>
+            <div>
+              <strong>Research</strong>
+              <p>Read our findings</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Brand Section -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">
+            <i class="fas fa-wind"></i>
+          </div>
+          Atmosfear
+        </div>
+        <p class="footer-description">
+          Making air pollution's health impacts visible through data science and innovative research.
+        </p>
+        <div class="footer-social">
+          <a href="mailto:atmosfear.group@gmail.com" class="social-icon" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" class="social-icon" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h3>Navigation</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tool.html">Country Tool</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <ul class="footer-links">
+          <li><a href="https://www.healthdata.org/">IHME GBD Data</a></li>
+          <li><a
+              href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/concentrations-of-fine-particulate-matter-(pm2-5)">WHO</a>
+          </li>
+          <li><a href="research.html#methodology">Methodology</a></li>
+          <li><a href="research.html#findings">Key Findings</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <p>&copy; 2025 Atmosfear - MIT Emerging Talent Program</p>
+      </div>
+
+      <div class="footer-credits">
+        <p>Built with passion for global health</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const offsetTop = target.offsetTop - 80;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Enhanced Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+
+          // Add staggered animation for team members
+          if (entry.target.classList.contains('team-member')) {
+            const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
+            entry.target.style.animationDelay = `${index * 0.1}s`;
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in elements
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Enhanced interactive hover effects
+    document.querySelectorAll('.interactive-element').forEach(element => {
+      element.addEventListener('mouseenter', function () {
+        if (!this.classList.contains('team-member')) {
+          this.style.transform = 'scale(1.02)';
+        }
+      });
+
+      element.addEventListener('mouseleave', function () {
+        if (!this.classList.contains('team-member')) {
+          this.style.transform = 'scale(1)';
+        }
+      });
+    });
+
+    // Navbar scroll effect with enhanced styling
+    window.addEventListener('scroll', function () {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Enhanced loading animation trigger
+    window.addEventListener('load', function () {
+      document.querySelectorAll('.loading').forEach(el => {
+        el.classList.remove('loading');
+      });
+    });
+
+    // Mobile menu functionality
+    document.querySelector('.mobile-menu').addEventListener('click', function () {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('show');
+
+      // Change hamburger to X when open
+      const icon = this.querySelector('i');
+      if (navLinks.classList.contains('show')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        const mobileMenu = document.querySelector('.mobile-menu i');
+        navLinks.classList.remove('show');
+        mobileMenu.classList.remove('fa-times');
+        mobileMenu.classList.add('fa-bars');
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function (e) {
+      const navbar = document.querySelector('.navbar');
+      const navLinks = document.querySelector('.nav-links');
+      const mobileMenu = document.querySelector('.mobile-menu');
+
+      if (!navbar.contains(e.target) && navLinks.classList.contains('show')) {
+        navLinks.classList.remove('show');
+        mobileMenu.querySelector('i').classList.remove('fa-times');
+        mobileMenu.querySelector('i').classList.add('fa-bars');
+      }
+    });
+
+    // Add typing effect to mission quote
+    function typeWriter(element, text, speed = 50) {
+      let i = 0;
+      element.innerHTML = '';
+      function type() {
+        if (i < text.length) {
+          element.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(type, speed);
+        }
+      }
+      type();
+    }
+
+    // Trigger typing effect when mission quote is visible
+    const missionQuote = document.querySelector('.mission-quote');
+    if (missionQuote) {
+      const originalText = missionQuote.textContent;
+      const quoteObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            typeWriter(entry.target, originalText, 30);
+            quoteObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      quoteObserver.observe(missionQuote);
+    }
+
+    // Counter animation for stats
+    function animateCounter(element, target) {
+      let current = 0;
+      const increment = target / 100;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          current = target;
+          clearInterval(timer);
+        }
+
+        if (target >= 1000000) {
+          element.textContent = (current / 1000000).toFixed(1) + 'M+';
+        } else if (target >= 1000) {
+          element.textContent = (current / 1000).toFixed(0) + 'K+';
+        } else {
+          element.textContent = Math.floor(current) + '+';
+        }
+      }, 20);
+    }
+
+    // Trigger counter animations
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const text = entry.target.textContent;
+          const number = parseFloat(text.replace(/[^\d.]/g, '')) * (text.includes('M') ? 1000000 : text.includes('K') ? 1000 : 1);
+          animateCounter(entry.target, number);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach(stat => {
+      statsObserver.observe(stat);
+    });
+  </script>
+</body>
+
+</html>

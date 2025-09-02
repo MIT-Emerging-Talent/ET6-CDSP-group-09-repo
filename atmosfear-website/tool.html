@@ -20,7 +20,7 @@
       overflow-x: hidden;
     }
 
-    /* Shared Navigation */
+    /* Navigation Bar */
     .navbar {
       position: fixed;
       top: 0;
@@ -30,6 +30,12 @@
       backdrop-filter: blur(10px);
       z-index: 1000;
       padding: 1rem 0;
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      background: rgba(15, 23, 42, 0.98);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
     }
 
     .nav-container {
@@ -73,11 +79,30 @@
       color: white;
       text-decoration: none;
       font-weight: 500;
+      transition: all 0.3s ease;
       position: relative;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: #22d3ee;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #22d3ee;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
     }
 
     .mobile-menu {
@@ -87,6 +112,7 @@
       cursor: pointer;
     }
 
+    /* Hero Section */
     .page-hero {
       padding: 120px 0 40px;
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
@@ -169,6 +195,12 @@
       border-radius: 6px;
       font-size: 1rem;
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .predict-button:hover:not(:disabled) {
+      background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+      transform: translateY(-2px);
     }
 
     .predict-button:disabled {
@@ -215,7 +247,7 @@
 
     .explanation-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(2, minmax(300px, 1fr));
       gap: 2rem;
     }
 
@@ -241,18 +273,6 @@
 
     .explanation-card p {
       color: #475569;
-    }
-
-    .footer {
-      background: #0f172a;
-      color: #94a3b8;
-      padding: 2rem 0;
-      margin-top: 40px;
-    }
-
-    .footer a {
-      color: #22d3ee;
-      text-decoration: none;
     }
 
     .insights-section {
@@ -283,55 +303,460 @@
       line-height: 1.5;
     }
 
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
+    /* Enhanced Footer Styles */
+    .footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #cbd5e1;
+      padding: 4rem 0 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .footer-logo-icon {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    .footer-description {
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+      font-size: 1rem;
+      color: #94a3b8;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+      background: #06b6d4;
+      transform: translateY(-3px);
+    }
+
+    .footer-col h3 {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+      border-radius: 2px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: #06b6d4;
+      transform: translateX(5px);
+    }
+
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .footer-copyright {
+      color: #94a3b8;
+    }
+
+    .footer-credits {
+      color: #94a3b8;
+      opacity: 0.8;
+    }
+
+    /* Floating Animation */
+    .floating {
+      animation: floating 3s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+
+      0%,
+      100% {
+        transform: translateY(0px);
       }
 
-      .mobile-menu {
-        display: block;
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Enhanced Mobile Responsiveness */
+    @media (max-width: 1024px) {
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      .page-hero {
+        padding: 100px 0 40px;
       }
 
       .tool-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
       }
+    }
 
+    @media (max-width: 768px) {
+
+      /* Navigation */
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(15, 23, 42, 0.98);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      /* Hero Section */
+      .page-hero {
+        padding: 80px 0 30px;
+        text-align: center;
+      }
+
+      /* Sections */
+      .section {
+        padding: 40px 0;
+      }
+
+      .container {
+        padding: 0 15px;
+      }
+
+      /* Tool Grid */
+      .tool-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      /* Tool Cards */
+      .tool-card {
+        padding: 1.5rem;
+      }
+
+      /* Explanation Grid */
       .explanation-grid {
         grid-template-columns: 1fr;
       }
+
+      /* Form Elements */
+      .form-control {
+        padding: 0.875rem;
+      }
+
+      .predict-button {
+        padding: 0.875rem;
+      }
+
+      /* Results */
+      .result-card {
+        padding: 1.5rem;
+        min-height: 250px;
+      }
+
+      /* Footer */
+      .footer {
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .footer-social {
+        justify-content: center;
+      }
+
+      .footer-bottom {
+        margin-top: 2rem;
+        padding-top: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      /* Mobile-first approach for small screens */
+      .container {
+        padding: 0 15px;
+      }
+
+      /* Navigation */
+      .nav-container {
+        padding: 0 15px;
+      }
+
+      .logo {
+        font-size: 1.3rem;
+      }
+
+      .logo-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+
+      /* Hero Section */
+      .page-hero {
+        padding: 70px 0 20px;
+      }
+
+      /* Tool Cards */
+      .tool-card {
+        padding: 1.25rem;
+      }
+
+      .tool-card h3 {
+        font-size: 1.3rem;
+      }
+
+      /* Form Elements */
+      .form-group {
+        margin-bottom: 1.25rem;
+      }
+
+      .form-control {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+      }
+
+      .predict-button {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+      }
+
+      /* Results */
+      .result-card {
+        padding: 1.25rem;
+        min-height: 200px;
+      }
+
+      /* Explanation Cards */
+      .explanation-card {
+        padding: 1.25rem;
+      }
+
+      .explanation-card h3 {
+        font-size: 1.1rem;
+      }
+
+      /* Footer */
+      .footer-logo {
+        font-size: 1.5rem;
+      }
+
+      .footer-logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      .footer-description {
+        font-size: 0.9rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+      }
+
+      .footer-links a {
+        font-size: 0.9rem;
+      }
+
+      .footer-bottom {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* Landscape phone orientation */
+    @media (max-width: 768px) and (orientation: landscape) {
+      .page-hero {
+        padding: 90px 0 40px;
+      }
+
+      .nav-container {
+        padding: 0 20px;
+      }
+    }
+
+    /* Touch-friendly improvements */
+    @media (hover: none) and (pointer: coarse) {
+
+      /* Larger touch targets */
+      .nav-links a {
+        padding: 15px 0;
+      }
+
+      .social-icon {
+        min-width: 44px;
+        min-height: 44px;
+      }
+
+      .predict-button {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .form-control {
+        min-height: 44px;
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      document.querySelector('.mobile-menu')?.addEventListener('click', function () {
-        const links = document.querySelector('.nav-links');
-        if (!links) return;
-        links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
-        links.style.flexDirection = 'column';
-        links.style.background = 'rgba(15,23,42,0.98)';
-        links.style.position = 'absolute';
-        links.style.top = '64px';
-        links.style.right = '20px';
-        links.style.padding = '1rem';
-        links.style.borderRadius = '8px';
-      });
-    });
-  </script>
 </head>
 
 <body>
-  <nav class="navbar">
+  <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <div class="logo-icon"><i class="fas fa-wind"></i></div>
+        <div class="logo-icon floating"><i class="fas fa-wind"></i></div>
         Atmosfear
       </a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="tool.html">Country Profile Tool</a></li>
+        <li><a href="tool.html" class="active">Country Profile Tool</a></li>
         <li><a href="research.html">Research</a></li>
-        <li><a href="index.html#about-section">About</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
       <div class="mobile-menu"><i class="fas fa-bars"></i></div>
@@ -445,12 +870,65 @@
     </div>
   </main>
 
+  <!-- Enhanced Footer -->
   <footer class="footer">
-    <div class="container"
-      style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
-      <div>© Atmosfear</div>
-      <div><a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" target="_blank"
-          rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a></div>
+    <div class="footer-container">
+      <!-- Brand Section -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">
+            <i class="fas fa-wind"></i>
+          </div>
+          Atmosfear
+        </div>
+        <p class="footer-description">
+          Making air pollution's health impacts visible through data science and innovative research.
+        </p>
+        <div class="footer-social">
+          <a href="mailto:atmosfear.group@gmail.com" class="social-icon" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/MIT-Emerging-Talent/ET6-CDSP-group-09-repo" class="social-icon" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h3>Navigation</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tool.html">Country Tool</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <ul class="footer-links">
+          <li><a href="https://www.healthdata.org/">IHME GBD Data</a></li>
+          <li><a
+              href="https://www.who.int/data/gho/data/indicators/indicator-details/GHO/concentrations-of-fine-particulate-matter-(pm2-5)">WHO</a>
+          </li>
+          <li><a href="research.html#methodology">Methodology</a></li>
+          <li><a href="research.html#findings">Key Findings</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copyright">
+        <p>&copy; 2025 Atmosfear - MIT Emerging Talent Program</p>
+      </div>
+
+      <div class="footer-credits">
+        <p>Built with passion for global health</p>
+      </div>
     </div>
   </footer>
 
@@ -716,7 +1194,7 @@
                     <div style="text-align:center; padding:2rem; color:#ef4444;">
                         <i class="fas fa-exclamation-triangle" style="font-size:2rem; margin-bottom:1rem;"></i>
                         <h4>Error Loading Data</h4>
-                        <p>${err.message || "Failed to fetch data from the server"}</p>
+                                               <p>${err.message || "Failed to fetch data from the server"}</p>
                     </div>
                 `;
       }
@@ -753,6 +1231,56 @@
         const country = countrySelect.value.trim();
         const year = yearSelect.value.trim();
         runPredictor(country, year);
+      });
+
+      // Navbar scroll effect
+      window.addEventListener('scroll', function () {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+
+      // Mobile menu functionality
+      document.querySelector('.mobile-menu').addEventListener('click', function () {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('show');
+
+        // Change hamburger to X when open
+        const icon = this.querySelector('i');
+        if (navLinks.classList.contains('show')) {
+          icon.classList.remove('fa-bars');
+          icon.classList.add('fa-times');
+        } else {
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          const navLinks = document.querySelector('.nav-links');
+          const mobileMenu = document.querySelector('.mobile-menu i');
+          navLinks.classList.remove('show');
+          mobileMenu.classList.remove('fa-times');
+          mobileMenu.classList.add('fa-bars');
+        });
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function (e) {
+        const navbar = document.querySelector('.navbar');
+        const navLinks = document.querySelector('.nav-links');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (!navbar.contains(e.target) && navLinks.classList.contains('show')) {
+          navLinks.classList.remove('show');
+          mobileMenu.querySelector('i').classList.remove('fa-times');
+          mobileMenu.querySelector('i').classList.add('fa-bars');
+        }
       });
     });
   </script>
